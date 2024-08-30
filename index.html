@@ -9,6 +9,7 @@
     <div id="blockOne">
       <p id="wordOne"></p>
     </div>
+    <div id="blockFour"></div>
     <div id="blockTwo">
       <p id="wordTwo"></p>
     </div>
@@ -27,6 +28,7 @@
         font-weight: bold;
         font-family: Sans-Serif;
         text-align: center;
+        line-height: 1;
         overflow: hidden;
       }
 
@@ -76,6 +78,16 @@
         justify-content: center;
       }
 
+      #blockFour {
+        background-color: #00212b;
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 57px;
+      }
+
       #okBtn {
         background-color: #196e6c;
         height: 100%;
@@ -87,7 +99,6 @@
         justify-content: center;
         font-size: 2rem;
         font-family: sans-serif;
-        line-height: 1;
         padding: 14px 0;
       }
 
@@ -106,7 +117,6 @@
         justify-content: center;
         font-size: 2rem;
         font-family: sans-serif;
-        line-height: 1;
         padding: 14px 0;
       }
 
@@ -125,7 +135,6 @@
         justify-content: center;
         font-size: 2rem;
         font-family: sans-serif;
-        line-height: 1;
         padding: 14px 0;
       }
 
@@ -279,6 +288,14 @@
 
       let allWordsTwo = [];
 
+      document.getElementById("blockOne").addEventListener("click", showDiv);
+      document.getElementById("blockTwo").addEventListener("click", showDiv);
+
+      function showDiv() {
+        let window = document.getElementById("blockFour");
+        window.style.display = "block";
+      }
+
       let btnOK = document.querySelector("#okBtn");
 
       btnOK.addEventListener("click", function () {
@@ -292,7 +309,12 @@
         let randomInteger = getRandomInteger();
         document.getElementById("wordOne").innerHTML = allWords[randomInteger][0];
         document.getElementById("wordTwo").innerHTML = allWords[randomInteger][1];
+        document.getElementById("blockFour").innerHTML = allWords[randomInteger][2];
         document.getElementById("wordCount").innerHTML = randomInteger;
+
+        let window = document.getElementById("blockFour");
+        window.style.display = "none";
+        window.style.padding = "15px 0 20px 0";
       });
 
       let btnMid = document.querySelector("#midBtn");
@@ -307,6 +329,12 @@
         let randomInteger2 = getRandomInteger2();
         document.getElementById("wordOne").innerHTML = allWordsTwo[randomInteger2][0];
         document.getElementById("wordTwo").innerHTML = allWordsTwo[randomInteger2][1];
+        document.getElementById("blockFour").innerHTML = allWordsTwo[randomInteger2][2];
+
+        let window = document.getElementById("blockFour");
+        window.style.display = "none";
+        window.style.padding = "15px 0 20px 0";
+
         for (const value2 of allWordsTwo) {
           console.log(value2);
         }

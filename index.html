@@ -15,7 +15,7 @@
     </div>
     <div id="blockThree">
       <div id="noBtn">NO</div>
-      <div id="midBtn">2</div>
+      <div id="midBtn"></div>
       <div id="okBtn">OK</div>
     </div>
     <p id="wordCount"></p>
@@ -28,7 +28,6 @@
         font-weight: bold;
         font-family: Sans-Serif;
         text-align: center;
-        line-height: 1;
         overflow: hidden;
       }
 
@@ -51,7 +50,6 @@
 
       #blockOne {
         width: 100%;
-        min-height: 30vh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -62,7 +60,6 @@
       #blockTwo {
         background-color: #073642;
         width: 100%;
-        min-height: 30vh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -296,6 +293,9 @@
         window.style.display = "block";
       }
 
+      let numWordsTwo = allWordsTwo.length;
+      document.getElementById("midBtn").innerHTML = numWordsTwo;
+
       let btnOK = document.querySelector("#okBtn");
 
       btnOK.addEventListener("click", function () {
@@ -334,10 +334,6 @@
         let window = document.getElementById("blockFour");
         window.style.display = "none";
         window.style.padding = "15px 0 20px 0";
-
-        for (const value2 of allWordsTwo) {
-          console.log(value2);
-        }
       });
 
       let btnNO = document.querySelector("#noBtn");
@@ -345,9 +341,9 @@
       btnNO.addEventListener("click", function () {
         let catchedNum = document.getElementById("wordCount").innerText;
         allWordsTwo.push(allWords[catchedNum]);
-        for (const value2 of allWordsTwo) {
-          console.log(value2);
-        }
+
+        let numWordsTwo = allWordsTwo.length;
+        document.getElementById("midBtn").innerHTML = numWordsTwo;
       });
     </script>
   </body>

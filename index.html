@@ -281,6 +281,8 @@
       ];
 
       let allWordsTwo = [];
+      let numWordsTwo = allWordsTwo.length;
+      document.getElementById("midBtn").innerHTML = numWordsTwo;
 
       let btnOk = document.querySelector("#okBtn");
       let btnMid = document.querySelector("#midBtn");
@@ -307,6 +309,8 @@
         console.log(element);
       }
 
+      // Show translation
+
       document.getElementById("blockOne").addEventListener("click", showDiv);
       document.getElementById("blockTwo").addEventListener("click", showDiv);
 
@@ -314,9 +318,6 @@
         let window = document.getElementById("blockFour");
         window.style.display = "block";
       }
-
-      let numWordsTwo = allWordsTwo.length;
-      document.getElementById("midBtn").innerHTML = numWordsTwo;
 
       // 1
 

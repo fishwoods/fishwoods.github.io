@@ -27,17 +27,20 @@
         font-family: Sans-Serif;
         text-align: center;
         overflow: hidden;
-        --bg: #1f1d2b;
-        --btnMid: #fc8704;
-        --btnOk: #212939;
-        --btnOktxt: #1cb0c0;
+        --bg: #3c3d42;
+        --btnMid: #676975;
+        --btnOk: #fcc33d;
+        --btnNo: #fe6426;
+        --txtDark: #212429;
+        --txtLight: #848796;
+        --txtWhite: #ffffff;
       }
 
       body {
         width: 100vw;
         height: 100dvh;
         background-color: var(--bg);
-        color: rgba(255, 255, 255, 0.5);
+        color: var(--txtWhite);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -51,7 +54,7 @@
       }
 
       #blockOne {
-        background-color: #00000010;
+        background-color: #00000020;
         width: 100%;
         display: flex;
         align-items: center;
@@ -78,7 +81,7 @@
       }
 
       #blockFour {
-        background-color: #00000040;
+        background-color: var(--txtDark);
         width: 100%;
         height: fit-content;
         display: flex;
@@ -89,7 +92,7 @@
 
       #okBtn {
         background-color: var(--btnOk);
-        color: var(--btnOktxt);
+        color: var(--txtWhite);
         height: 10vh;
         margin: 10px;
         border-radius: 20px;
@@ -102,14 +105,14 @@
       }
 
       #okBtn:active {
-        background-color: #008ba1;
+        background-color: var(--txtDark);
       }
 
       #midBtn {
         background-color: var(--btnMid);
-        color: white;
+        color: var(--txtWhite);
         height: 10vh;
-        margin: 10px;
+        margin: 10px 0;
         border-radius: 20px;
         display: flex;
         flex-grow: 1;
@@ -120,12 +123,12 @@
       }
 
       #midBtn:active {
-        background-color: #008ba1;
+        background-color: var(--txtDark);
       }
 
       #noBtn {
-        background-color: var(--btnOk);
-        color: var(--btnOktxt);
+        background-color: var(--btnNo);
+        color: var(--txtWhite);
         height: 10vh;
         margin: 10px;
         border-radius: 20px;
@@ -138,7 +141,7 @@
       }
 
       #noBtn:active {
-        background-color: #008ba1;
+        background-color: var(--txtDark);
       }
 
       button,

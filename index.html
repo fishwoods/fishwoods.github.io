@@ -27,19 +27,19 @@
         font-family: Sans-Serif;
         text-align: center;
         overflow: hidden;
-        --bg: #3c3d42;
-        --btnMid: #676975;
-        --btnOk: #fcc33d;
-        --btnNo: #fe6426;
-        --txtDark: #212429;
-        --txtLight: #848796;
+        --bgMain: #3c3d42;
+        --btnOk: #7f66ff;
+        --btnMid: #5068a5;
+        --btnNo: #202c4e;
+        --txtDark: #6388d1;
+        --txtLight: #a0d0ff;
         --txtWhite: #ffffff;
       }
 
       body {
         width: 100vw;
         height: 100dvh;
-        background: var(--bg);
+        background: linear-gradient(180deg, rgba(45, 59, 97, 1) 40%, rgba(53, 69, 110, 1) 60%);
         color: var(--txtWhite);
         display: flex;
         flex-direction: column;
@@ -54,7 +54,7 @@
       }
 
       #blockOne {
-        background-color: #00000020;
+        sbackground-color: #00000020;
         width: 100%;
         display: flex;
         align-items: center;
@@ -81,7 +81,7 @@
       }
 
       #blockFour {
-        background-color: var(--btnMid);
+        background-color: var(--btnOk);
         width: 100%;
         height: fit-content;
         display: flex;
@@ -94,8 +94,8 @@
         background-color: var(--btnOk);
         color: var(--txtWhite);
         height: 10vh;
-        margin: 10px;
-        border-radius: 5px;
+        margin: 4px;
+        border-radius: 4px;
         display: flex;
         flex-grow: 1;
         align-items: center;
@@ -110,10 +110,10 @@
 
       #midBtn {
         background-color: var(--btnMid);
-        color: var(--txtWhite);
+        color: var(--txtLight);
         height: 10vh;
-        margin: 10px 0;
-        border-radius: 5px;
+        margin: 4px 0;
+        border-radius: 4px;
         display: flex;
         flex-grow: 1;
         align-items: center;
@@ -128,10 +128,10 @@
 
       #noBtn {
         background-color: var(--btnNo);
-        color: var(--txtWhite);
+        color: var(--txtDark);
         height: 10vh;
-        margin: 10px;
-        border-radius: 5px;
+        margin: 4px;
+        border-radius: 4px;
         display: flex;
         flex-grow: 1;
         align-items: center;

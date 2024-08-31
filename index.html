@@ -16,7 +16,7 @@
       <div id="midBtn"></div>
       <div id="okBtn">OK</div>
     </div>
-
+    <div id="showListBtn">W</div>
     <p id="wordCount"></p>
 
     <style>
@@ -160,23 +160,38 @@
         left: 0;
       }
 
+      #showListBtn {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        margin: 3px;
+        border-radius: 4px;
+        background-color: #04aa6d;
+        color: white;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
       table {
         display: none;
         position: absolute;
-        top: 0;
+        top: 59px;
         left: 0;
-        z-index: -999;
+        z-index: 1;
         width: 100%;
         background: #1d2a35;
-        border: 1px solid #37444d;
-        overflow-x: hidden;
+        border: none;
       }
 
       th,
       td {
+        width: 100%;
         border: none;
         padding: 10px 5px;
-        flex-grow: 1;
       }
 
       tbody tr:nth-child(odd) {
@@ -320,11 +335,13 @@
 
       let btnOk = document.querySelector("#okBtn");
       let btnMid = document.querySelector("#midBtn");
+      let listBtn = document.querySelector("#showListBtn");
       let text = document.getElementById("blockOne");
       let text2 = document.getElementById("blockTwo");
       let text3 = document.getElementById("blockFour");
       btnOk.addEventListener("click", changeTextOk);
       btnMid.addEventListener("click", changeText);
+      listBtn.addEventListener("click", showList);
       index = 0;
 
       let wHeight = window.innerHeight;
@@ -399,7 +416,9 @@
       });
 
       //create a Table Object
+
       let table = document.createElement("table");
+      table.setAttribute("id", "table");
       //iterate over every array(row) within tableArr
       for (let row of arrWords) {
         //Insert a new row element into the table element
@@ -415,6 +434,11 @@
       }
       //append the compiled table to the DOM
       document.body.appendChild(table);
+
+      function showList() {
+        let window = document.getElementById("table");
+        window.style.display = "block";
+      }
     </script>
   </body>
 </html>

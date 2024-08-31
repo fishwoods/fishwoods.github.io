@@ -6,13 +6,9 @@
     <title>enWords</title>
   </head>
   <body>
-    <div id="blockOne">
-      <p id="wordOne"></p>
-    </div>
+    <div id="blockOne"></div>
     <div id="blockFour"></div>
-    <div id="blockTwo">
-      <p id="wordTwo"></p>
-    </div>
+    <div id="blockTwo"></div>
     <div id="blockThree">
       <div id="noBtn">NO</div>
       <div id="midBtn"></div>
@@ -307,8 +303,8 @@
           return randNum;
         }
         let randomInteger = getRandomInteger();
-        document.getElementById("wordOne").innerHTML = allWords[randomInteger][0];
-        document.getElementById("wordTwo").innerHTML = allWords[randomInteger][1];
+        document.getElementById("blockOne").innerHTML = allWords[randomInteger][0];
+        document.getElementById("blockTwo").innerHTML = allWords[randomInteger][1];
         document.getElementById("blockFour").innerHTML = allWords[randomInteger][2];
         document.getElementById("wordCount").innerHTML = randomInteger;
 
@@ -317,24 +313,25 @@
         window.style.padding = "15px 0 20px 0";
       });
 
+      // 2
+
       let btnMid = document.querySelector("#midBtn");
+      let text = document.getElementById("blockOne");
+      let text2 = document.getElementById("blockTwo");
+      let text3 = document.getElementById("blockFour");
+      index = 0;
+      btnMid.addEventListener("click", changeText);
 
-      btnMid.addEventListener("click", function () {
-        function getRandomInteger2(min, max) {
-          min = Math.ceil(0);
-          let numWordsTwo = allWordsTwo.length;
-          max = Math.floor(numWordsTwo);
-          return Math.floor(Math.random() * (max - min)) + min;
-        }
-        let randomInteger2 = getRandomInteger2();
-        document.getElementById("wordOne").innerHTML = allWordsTwo[randomInteger2][0];
-        document.getElementById("wordTwo").innerHTML = allWordsTwo[randomInteger2][1];
-        document.getElementById("blockFour").innerHTML = allWordsTwo[randomInteger2][2];
-
+      function changeText() {
+        index++;
+        index %= allWordsTwo.length;
+        text.innerHTML = allWordsTwo[index][0];
+        text2.innerHTML = allWordsTwo[index][1];
+        text3.innerHTML = allWordsTwo[index][2];
         let window = document.getElementById("blockFour");
         window.style.display = "none";
         window.style.padding = "15px 0 20px 0";
-      });
+      }
 
       let btnNO = document.querySelector("#noBtn");
 

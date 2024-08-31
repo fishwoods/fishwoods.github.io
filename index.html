@@ -41,7 +41,6 @@
 
       #wrap {
         width: 100%;
-        height: calc(100vh - 100px);
         background: #1d2a35;
         display: flex;
         flex-direction: column;
@@ -328,6 +327,10 @@
       btnMid.addEventListener("click", changeText);
       index = 0;
 
+      let wHeight = window.innerHeight;
+      let wHeight100 = wHeight - 100;
+      document.getElementById("wrap").style.height = wHeight100 + "px";
+
       // Fisher-Yates Sorting Algorithm
 
       const shuffle = (array) => {
@@ -340,9 +343,9 @@
 
       const shuffledArray = shuffle(allWords);
 
-      for (const element of shuffledArray) {
+      /*    for (const element of shuffledArray) {
         console.log(element);
-      }
+      } */
 
       // Show translation
 

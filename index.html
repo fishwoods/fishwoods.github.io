@@ -28,12 +28,15 @@
         font-weight: bold;
         font-family: Sans-Serif;
         text-align: center;
-        color: #dddddd;
-        --bgMain: #1d2a35;
+        color: var(--txt);
+        --bgMain: linear-gradient(180deg, rgba(13, 9, 59, 1) 0%, rgba(8, 8, 44, 1) 100%);
+        --txt: #e5ebff;
+        --btnOk: #4a2ab3;
+        --btnNo: #0d093b;
       }
 
       body {
-        background: #1d2a35;
+        background: var(--bgMain);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -42,7 +45,7 @@
 
       #wrap {
         width: 100vw;
-        background: #1d2a35;
+        background: var(--bgMain);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -71,16 +74,17 @@
 
       #word2 {
         display: none;
-        background-color: #193d3d;
+        background-color: var(--btnOk);
+        color: white;
         width: 100%;
         height: fit-content;
         align-items: center;
         justify-content: center;
         font-size: 57px;
+        overflow: hidden;
       }
 
       #nav {
-        background: #1d2a35;
         width: 100vw;
         height: 100px;
         display: flex;
@@ -90,12 +94,11 @@
       }
 
       #btnOk {
-        background-color: #04aa6d;
-        color: white;
+        background-color: var(--btnOk);
         height: 100%;
         width: 32vw;
         margin: 3px;
-        border-radius: 4px;
+        border-radius: 30px;
         display: flex;
         flex-grow: 1;
         align-items: center;
@@ -104,11 +107,12 @@
       }
 
       #btnMid {
-        background-color: #37444d;
-        height: 100%;
-        width: 32vw;
-        margin: 3px 0;
-        border-radius: 4px;
+        background-color: transparent;
+        border: 4px solid var(--btnOk);
+        border-radius: 100%;
+        height: 90px;
+        width: 90px;
+        margin: 3px;
         display: flex;
         flex-grow: 1;
         align-items: center;
@@ -117,11 +121,11 @@
       }
 
       #btnNo {
-        background-color: #193d3d;
+        background-color: var(--btnNo);
         height: 100%;
         width: 32vw;
         margin: 3px;
-        border-radius: 4px;
+        border-radius: 30px;
         display: flex;
         flex-grow: 1;
         align-items: center;
@@ -135,10 +139,11 @@
         right: 0;
         z-index: 2;
         margin: 3px;
-        border-radius: 4px;
-        background-color: #193d3d;
+        border-radius: 15px;
+        background-color: var(--btnOk);
         width: 50px;
         height: 50px;
+        font-size: 1.5rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -172,7 +177,7 @@
         top: 55px;
         left: 0;
         z-index: 1;
-        background: #1d2a35;
+        background: var(--bgMain);
         border: none;
       }
 
@@ -183,7 +188,7 @@
       }
 
       tbody tr:nth-child(odd) {
-        background-color: #37444d;
+        background-color: rgba(255, 255, 255, 0.1);
       }
     </style>
 
@@ -321,7 +326,7 @@
 
       // viewpor theight
       let wHeight = window.innerHeight;
-      let wHeight100 = wHeight - 100;
+      let wHeight100 = wHeight - 103;
       document.getElementById("wrap").style.height = wHeight100 + "px";
 
       // Fisher-Yates Sorting Algorithm

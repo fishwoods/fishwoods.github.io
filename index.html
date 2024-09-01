@@ -7,6 +7,10 @@
   </head>
   <body>
     <div id="wrap">
+      <div id="navTop">
+        <div id="btnPage2">●</div>
+        <div id="btnList">w</div>
+      </div>
       <div id="word0"></div>
       <div id="word2"></div>
       <div id="word1"></div>
@@ -17,7 +21,6 @@
       </div>
     </div>
 
-    <div id="btnList">w</div>
     <div id="indexOfArrayBig"></div>
     <div id="indexOfArraySmall"></div>
 
@@ -48,7 +51,7 @@
 
       #wrap {
         width: 100%;
-        max-width: 500px;
+        max-width: 340px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -58,7 +61,7 @@
       #word0 {
         width: 100%;
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         justify-content: center;
         font-size: 70px;
         flex-grow: 1;
@@ -68,7 +71,7 @@
       #word1 {
         width: 100%;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         font-size: 70px;
         flex-grow: 1;
@@ -77,14 +80,14 @@
 
       #word2 {
         display: none;
-        background-color: var(--btnOk);
-        color: white;
+        background: var(--btnOk);
         width: 100%;
         height: fit-content;
         align-items: center;
         justify-content: center;
         font-size: 57px;
         overflow: hidden;
+        border-radius: 40px;
       }
 
       #nav {
@@ -92,7 +95,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: center;
+        justify-content: space-evenly;
         margin-bottom: 3px;
       }
 
@@ -101,9 +104,9 @@
       }
 
       #btnOk {
-        min-width: 115px;
-        background-color: var(--btnOk);
-        height: 100%;
+        width: 100px;
+        height: 100px;
+        background: var(--btnOk);
         border-radius: 30px;
         display: flex;
         align-items: center;
@@ -112,11 +115,11 @@
       }
 
       #btnMid {
-        background-color: transparent;
+        background: transparent;
         border: 4px solid var(--btnOk);
         border-radius: 100%;
-        height: 88px;
-        width: 88px;
+        height: 92px;
+        width: 92px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -124,9 +127,9 @@
       }
 
       #btnNo {
-        min-width: 115px;
-        background-color: var(--btnNo);
-        height: 100%;
+        width: 100px;
+        height: 100px;
+        background: var(--btnNo);
         border-radius: 30px;
         display: flex;
         align-items: center;
@@ -135,11 +138,8 @@
       }
 
       #btnList {
-        position: fixed;
-        top: 3px;
-        z-index: 2;
         border-radius: 15px;
-        background-color: var(--btnOk);
+        background: var(--btnOk);
         width: 50px;
         height: 50px;
         font-size: 1.5rem;
@@ -148,16 +148,35 @@
         justify-content: center;
       }
 
+      #btnPage2 {
+        border-radius: 15px;
+        background: var(--btnOk);
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #navTop {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 3px;
+      }
+
       #btnOk:active,
       #btnMid:active,
       #btnNo:active,
+      #btnPage2:active,
       #btnList:active {
         opacity: 0.5;
       }
 
       #indexOfArrayBig {
         display: none;
-        color: white;
         position: absolute;
         top: 0;
         left: 0;
@@ -165,7 +184,6 @@
 
       #indexOfArraySmall {
         display: none;
-        color: white;
         position: absolute;
         top: 30px;
         left: 0;
@@ -186,7 +204,7 @@
       }
 
       tbody tr:nth-child(odd) {
-        background-color: rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.08);
       }
     </style>
 

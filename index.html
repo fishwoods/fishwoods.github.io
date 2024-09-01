@@ -393,7 +393,13 @@
       const btnNo = document.getElementById("btnNo");
 
       btnNo.addEventListener("click", () => {
-        arraySmall.push(shuffledArrayBig[indexOfArrayBig - 1]);
+        let x = indexOfArrayBig - 1;
+        let check = shuffledArrayBig[x];
+        if (arraySmall.includes(check)) {
+          console.log("element is already in array");
+        } else {
+          arraySmall.push(shuffledArrayBig[x]);
+        }
 
         document.getElementById("btnMid").innerHTML = arraySmall.length;
       });

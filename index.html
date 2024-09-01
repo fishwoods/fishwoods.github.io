@@ -7,17 +7,18 @@
   </head>
   <body>
     <div id="wrap">
-      <div id="blockOne"></div>
-      <div id="blockFour"></div>
-      <div id="blockTwo"></div>
+      <div id="word0"></div>
+      <div id="word2"></div>
+      <div id="word1"></div>
     </div>
-    <div id="blockThree">
-      <div id="noBtn">NO</div>
-      <div id="midBtn"></div>
-      <div id="okBtn">OK</div>
+    <div id="nav">
+      <div id="btnNo">NO</div>
+      <div id="btnMid"></div>
+      <div id="btnOk">OK</div>
     </div>
-    <div id="showListBtn">W</div>
-    <p id="wordCount"></p>
+    <div id="btnList">W</div>
+    <div id="indexOfArrayBig"></div>
+    <div id="indexOfArraySmall"></div>
 
     <style>
       * {
@@ -48,13 +49,7 @@
         justify-content: center;
       }
 
-      #randomNumber {
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-
-      #blockOne {
+      #word0 {
         width: 100%;
         display: flex;
         align-items: center;
@@ -64,7 +59,7 @@
         overflow: hidden;
       }
 
-      #blockTwo {
+      #word1 {
         width: 100%;
         display: flex;
         align-items: center;
@@ -74,7 +69,17 @@
         overflow: hidden;
       }
 
-      #blockThree {
+      #word2 {
+        display: none;
+        background-color: #193d3d;
+        width: 100%;
+        height: fit-content;
+        align-items: center;
+        justify-content: center;
+        font-size: 57px;
+      }
+
+      #nav {
         background: #1d2a35;
         width: 100%;
         height: 100px;
@@ -85,17 +90,7 @@
         margin-top: auto;
       }
 
-      #blockFour {
-        background-color: #193d3d;
-        width: 100%;
-        height: fit-content;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 57px;
-      }
-
-      #okBtn {
+      #btnOk {
         background-color: #04aa6d;
         color: white;
         height: 100%;
@@ -109,11 +104,7 @@
         font-family: sans-serif;
       }
 
-      #okBtn:active {
-        opacity: 0.5;
-      }
-
-      #midBtn {
+      #btnMid {
         background-color: #37444d;
         height: 100%;
         margin: 3px 0;
@@ -126,11 +117,7 @@
         font-family: sans-serif;
       }
 
-      #midBtn:active {
-        opacity: 0.5;
-      }
-
-      #noBtn {
+      #btnNo {
         background-color: #193d3d;
         height: 100%;
         margin: 3px;
@@ -143,26 +130,7 @@
         font-family: sans-serif;
       }
 
-      #noBtn:active {
-        opacity: 0.5;
-      }
-
-      button,
-      button:active,
-      button:focus {
-        outline: none;
-        border: none;
-      }
-
-      p#wordCount {
-        display: none;
-        color: white;
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-
-      #showListBtn {
+      #btnList {
         position: fixed;
         top: 0;
         right: 0;
@@ -177,22 +145,40 @@
         justify-content: center;
       }
 
-      table {
-        display: none;
+      #btnOk:active,
+      #btnMid:active,
+      #btnNo:active,
+      #btnList:active {
+        opacity: 0.5;
+      }
+
+      #indexOfArrayBig {
+        color: white;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      #indexOfArraySmall {
+        color: white;
+        position: absolute;
+        top: 30px;
+        left: 0;
+      }
+
+      #table {
         position: absolute;
         top: 55px;
         left: 0;
         z-index: 1;
-        width: 100%;
         background: #1d2a35;
         border: none;
       }
 
-      th,
       td {
-        width: 100%;
+        width: 33vw;
         border: none;
-        padding: 10px 5px;
+        padding: 10px 0;
       }
 
       tbody tr:nth-child(odd) {
@@ -201,7 +187,7 @@
     </style>
 
     <script>
-      let arrWords = [
+      let arrayOrig = [
         ["be", "би", "быть"],
         ["break", "брэйк", "разбить"],
         ["bring", "бринг", "принести"],
@@ -235,7 +221,7 @@
         ["teach", "тич", "учить"],
         ["tell", "тэл", "сказать"],
         ["think", "синк", "думать"],
-        ["travel", "трЭвэл", "путешествовать"],
+        ["travel", "трЭвэл", "путеш-вать"],
         ["try", "трай", "стараться"],
         ["write", "райт", "писать"],
         ["wait", "вэйт", "ждать"],
@@ -271,10 +257,10 @@
         ["bad", "бэд", "плохой"],
         ["best", "бэст", "лучший"],
         ["right", "райт", "правильный"],
-        ["only", "Онли", "единственный"],
+        ["only", "Онли", "единст-ный"],
         ["low", "лОу", "низкий"],
-        ["early", "Ёрли", "ранний"],
-        ["late", "лЭйт", "поздний"],
+        ["early", "Ёрли", "рано"],
+        ["late", "лЭйт", "поздно"],
         ["hard", "хард", "жесткий"],
         ["strong", "стронг", "сильный"],
         ["free", "фри", "свободный"],
@@ -284,7 +270,7 @@
         ["current", "кАрэнт", "текущий"],
         ["wrong", "ронг", "неправильный"],
         ["common", "кОмон", "общий"],
-        ["natural", "нЭчурал", "естественный"],
+        ["natural", "нЭчурал", "естест-ный"],
         ["similar", "сИмилар", "похожий"],
         ["hot", "хот", "горячий"],
         ["happy", "хэпи", "счастливый"],
@@ -329,28 +315,15 @@
         ["fine", "файн", "хорошо"],
       ];
 
-      let allWords = [...arrWords];
-      let allWordsTwo = [];
-      let numWordsTwo = allWordsTwo.length;
-      document.getElementById("midBtn").innerHTML = numWordsTwo;
+      let arrayBig = [...arrayOrig];
+      let arraySmall = [];
 
-      let btnOk = document.querySelector("#okBtn");
-      let btnMid = document.querySelector("#midBtn");
-      let listBtn = document.querySelector("#showListBtn");
-      let text = document.getElementById("blockOne");
-      let text2 = document.getElementById("blockTwo");
-      let text3 = document.getElementById("blockFour");
-      btnOk.addEventListener("click", changeTextOk);
-      btnMid.addEventListener("click", changeText);
-      listBtn.addEventListener("click", showList);
-      index = 0;
-
+      // viewpor theight
       let wHeight = window.innerHeight;
       let wHeight100 = wHeight - 100;
       document.getElementById("wrap").style.height = wHeight100 + "px";
 
       // Fisher-Yates Sorting Algorithm
-
       const shuffle = (array) => {
         for (let i = array.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
@@ -358,70 +331,89 @@
         }
         return array;
       };
+      const shuffledArrayBig = shuffle(arrayBig);
 
-      const shuffledArray = shuffle(allWords);
+      //1
+      // Variable to keep track of the current index in the array
+      let indexOfArrayBig = 0;
 
-      /*    for (const element of shuffledArray) {
-        console.log(element);
-      } */
+      // Get references to the button and display element
+      const btnOk = document.getElementById("btnOk");
+      const displayWord0 = document.getElementById("word0");
+      const displayWord1 = document.getElementById("word1");
+      const displayWord2 = document.getElementById("word2");
 
-      // Show translation
+      // Add a click event listener to the button
+      btnOk.addEventListener("click", () => {
+        // Use the % operator to calculate the remainder of currentIndex divided by the array length
+        // This ensures that currentIndex stays within the bounds of the array, effectively cycling through the elements
+        indexOfArrayBig %= shuffledArrayBig.length;
 
-      document.getElementById("blockOne").addEventListener("click", showDiv);
-      document.getElementById("blockTwo").addEventListener("click", showDiv);
+        // Set the text content of the display element to the current element in the array
+        displayWord0.textContent = shuffledArrayBig[indexOfArrayBig][0];
+        displayWord1.textContent = shuffledArrayBig[indexOfArrayBig][1];
+        displayWord2.textContent = shuffledArrayBig[indexOfArrayBig][2];
 
-      function showDiv() {
-        let window = document.getElementById("blockFour");
-        window.style.display = "block";
-      }
+        // Increment currentIndex to move to the next element on the next click
+        indexOfArrayBig++;
 
-      // 1
+        document.getElementById("indexOfArrayBig").innerHTML = indexOfArrayBig;
+        hideTranslation();
 
-      function changeTextOk() {
-        index++;
-        index %= shuffledArray.length;
-        text.innerHTML = shuffledArray[index][0];
-        text2.innerHTML = shuffledArray[index][1];
-        text3.innerHTML = shuffledArray[index][2];
-
-        document.getElementById("wordCount").innerHTML = index;
-
-        let window = document.getElementById("blockFour");
-        window.style.display = "none";
-        window.style.padding = "15px 0 20px 0";
-      }
-
-      // 2
-
-      function changeText() {
-        index++;
-        index %= allWordsTwo.length;
-        text.innerHTML = allWordsTwo[index][0];
-        text2.innerHTML = allWordsTwo[index][1];
-        text3.innerHTML = allWordsTwo[index][2];
-        let window = document.getElementById("blockFour");
-        window.style.display = "none";
-        window.style.padding = "15px 0 20px 0";
-      }
-
-      //3
-
-      let btnNO = document.querySelector("#noBtn");
-
-      btnNO.addEventListener("click", function () {
-        let catchedNum = document.getElementById("wordCount").innerText;
-        allWordsTwo.push(shuffledArray[catchedNum]);
-
-        let numWordsTwo = allWordsTwo.length;
-        document.getElementById("midBtn").innerHTML = numWordsTwo;
+        indexOfArraySmall = 0;
       });
 
-      //create a Table Object
+      //2
+      let indexOfArraySmall = 0;
 
+      const btnMid = document.getElementById("btnMid");
+
+      btnMid.addEventListener("click", () => {
+        indexOfArraySmall %= arraySmall.length;
+
+        displayWord0.textContent = arraySmall[indexOfArraySmall][0];
+        displayWord1.textContent = arraySmall[indexOfArraySmall][1];
+        displayWord2.textContent = arraySmall[indexOfArraySmall][2];
+
+        indexOfArraySmall++;
+
+        document.getElementById("indexOfArraySmall").innerHTML = indexOfArraySmall;
+        hideTranslation();
+      });
+
+      //3
+      const btnNo = document.getElementById("btnNo");
+
+      btnNo.addEventListener("click", () => {
+        arraySmall.push(shuffledArrayBig[indexOfArrayBig - 1]);
+
+        document.getElementById("btnMid").innerHTML = arraySmall.length;
+      });
+
+      // Show translation + make sure padding is 0 when page is empty
+      document.getElementById("word0").addEventListener("click", showTranslation);
+      document.getElementById("word1").addEventListener("click", showTranslation);
+
+      function showTranslation() {
+        document.getElementById("word2").style.display = "flex";
+        if (indexOfArrayBig === 0) {
+          document.getElementById("word2").style.paddingBottom = "0";
+        } else {
+          document.getElementById("word2").style.paddingBottom = "7px";
+        }
+      }
+
+      // Hide translation
+      function hideTranslation() {
+        document.getElementById("word2").style.display = "none";
+      }
+
+      //create a Table Object
       let table = document.createElement("table");
       table.setAttribute("id", "table");
+      table.setAttribute("style", "display: none");
       //iterate over every array(row) within tableArr
-      for (let row of arrWords) {
+      for (let row of arrayOrig) {
         //Insert a new row element into the table element
         table.insertRow();
         //Iterate over every index(cell) in each array(row)
@@ -436,9 +428,16 @@
       //append the compiled table to the DOM
       document.body.appendChild(table);
 
-      function showList() {
-        let window = document.getElementById("table");
-        window.style.display = "block";
+      // Show - hide table
+      document.getElementById("btnList").addEventListener("click", showTable);
+
+      function showTable() {
+        let x = document.getElementById("table");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
       }
     </script>
   </body>

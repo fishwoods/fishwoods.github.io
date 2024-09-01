@@ -19,6 +19,7 @@
         <div id="btnMid">0</div>
         <div id="btnOk">OK</div>
       </div>
+      <div id="tableDiv" style="display: none"></div>
     </div>
 
     <div id="indexOfArrayBig"></div>
@@ -185,17 +186,25 @@
         left: 0;
       }
 
-      #table {
+      #tableDiv {
         position: absolute;
-        top: 55px;
-        z-index: 1;
+        top: 59px;
+        width: 340px;
+        height: 90%;
+        z-index: 2;
+        overflow-y: scroll;
+        margin-top: 10px;
         background: var(--bgMain);
-        border: none;
+      }
+
+      table {
+        table-layout: fixed;
+        width: 100%;
+        font-size: 98%;
       }
 
       td {
-        width: 162px;
-        border: none;
+        width: 100%;
         padding: 10px 0;
       }
 
@@ -437,7 +446,7 @@
       //create a Table Object
       let table = document.createElement("table");
       table.setAttribute("id", "table");
-      table.setAttribute("style", "display: none");
+      //table.setAttribute("style", "display: none");
       //iterate over every array(row) within tableArr
       for (let row of arrayOrig) {
         //Insert a new row element into the table element
@@ -452,13 +461,14 @@
         }
       }
       //append the compiled table to the DOM
-      document.body.appendChild(table);
+      const targetDiv = document.getElementById("tableDiv");
+      targetDiv.appendChild(table);
 
       // Show - hide table
       document.getElementById("btnList").addEventListener("click", showTable);
 
       function showTable() {
-        let x = document.getElementById("table");
+        let x = document.getElementById("tableDiv");
         if (x.style.display === "none") {
           x.style.display = "block";
         } else {

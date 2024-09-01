@@ -359,6 +359,8 @@
         // Increment currentIndex to move to the next element on the next click
         indexOfArrayBig++;
 
+        btnOk.innerHTML = shuffledArrayBig.length - indexOfArrayBig + 1;
+
         document.getElementById("indexOfArrayBig").innerHTML = indexOfArrayBig;
         hideTranslation();
 

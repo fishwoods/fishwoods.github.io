@@ -447,16 +447,15 @@
         document.querySelector("#btnMid").innerHTML = arraySmall.length;
       });
 
-      // Show translation + make sure padding is 0 when page is empty
+      // Show translation
       document.querySelector("#word0").addEventListener("click", showTranslation);
       document.querySelector("#word1").addEventListener("click", showTranslation);
 
       function showTranslation() {
         document.querySelector("#word2").style.display = "flex";
         if (indexOfArrayBig === 0) {
-          document.querySelector("#word2").style.paddingBottom = "0";
+          document.querySelector("#word2").style.display = "none";
         } else {
-          //document.querySelector("#word2").style.paddingBottom = "5px";
         }
       }
 

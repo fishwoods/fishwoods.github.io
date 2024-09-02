@@ -6,23 +6,21 @@
     <title>enWords</title>
   </head>
   <body>
-    <div id="pageOne">
-      <div id="wrap">
-        <div id="navTop">
-          <div id="btnPage2">●</div>
-          <div id="viewport"></div>
-          <div id="btnList">w</div>
-        </div>
-        <div id="word0"></div>
-        <div id="word2"></div>
-        <div id="word1"></div>
-        <div id="nav">
-          <div id="btnNo">NO</div>
-          <div id="btnMid">0</div>
-          <div id="btnOk">OK</div>
-        </div>
-        <div id="tableDiv" style="display: none"></div>
+    <div id="wrap">
+      <div id="navTop">
+        <div id="btnPage2">●</div>
+        <div id="viewport"></div>
+        <div id="btnList">w</div>
       </div>
+      <div id="word0"></div>
+      <div id="word2"></div>
+      <div id="word1"></div>
+      <div id="nav">
+        <div id="btnNo">NO</div>
+        <div id="btnMid">0</div>
+        <div id="btnOk">OK</div>
+      </div>
+      <div id="tableDiv" style="display: none"></div>
     </div>
 
     <div id="indexOfArrayBig"></div>
@@ -36,6 +34,7 @@
         font-weight: bold;
         font-family: Sans-Serif;
         text-align: center;
+        line-height: 1;
         color: var(--txt);
         --bgMain: linear-gradient(180deg, rgba(13, 9, 59, 1) 0%, rgba(8, 8, 44, 1) 100%);
         --txt: #ffffff;
@@ -51,10 +50,6 @@
       body {
         height: 100%;
         background: var(--bgMain);
-      }
-
-      #pageOne {
-        height: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -68,7 +63,6 @@
         flex-direction: column;
         align-items: center;
         flex: 1;
-        margin: 10px 0;
       }
 
       #word0 {
@@ -97,12 +91,13 @@
         display: none;
         background: var(--btnOk);
         width: 100%;
-        height: fit-content;
+        height: 80px;
         align-items: center;
         justify-content: center;
         font-size: 3.4rem;
         overflow: hidden;
-        border-radius: 15px;
+        border-radius: 10px;
+        margin: 20px 0;
       }
 
       #navTop {
@@ -111,6 +106,7 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        margin-top: 10px;
       }
 
       #nav {
@@ -119,6 +115,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        margin-bottom: 10px;
       }
 
       #btnOk {
@@ -454,7 +451,7 @@
         if (indexOfArrayBig === 0) {
           document.querySelector("#word2").style.paddingBottom = "0";
         } else {
-          document.querySelector("#word2").style.paddingBottom = "5px";
+          //document.querySelector("#word2").style.paddingBottom = "5px";
         }
       }
 

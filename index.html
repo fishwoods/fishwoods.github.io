@@ -348,7 +348,15 @@
         ["fine", "файн", "хорошо"],
       ];
 
-      let arrayBig = [...arrayOrig];
+      function cloneArray(arr) {
+        const clonedArr = [];
+        for (let i = 0; i < arr.length; i++) {
+          clonedArr[i] = arr[i];
+        }
+        return clonedArr;
+      }
+
+      let arrayBig = cloneArray(arrayOrig);
       let arraySmall = [];
 
       // viewport size

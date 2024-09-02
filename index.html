@@ -9,6 +9,7 @@
     <div id="wrap">
       <div id="navTop">
         <div id="btnPage2">●</div>
+        <div id="viewport"></div>
         <div id="btnList">w</div>
       </div>
       <div id="word0"></div>
@@ -56,12 +57,12 @@
       }
 
       #wrap {
-        flex: 1;
         width: 340px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        flex: 1;
+        margin: 10px 0;
       }
 
       #word0 {
@@ -70,7 +71,7 @@
         align-items: flex-end;
         justify-content: center;
         font-size: 4.2rem;
-        flex-grow: 1;
+        flex: 1;
         overflow: hidden;
         padding-bottom: 20px;
       }
@@ -81,7 +82,7 @@
         align-items: flex-start;
         justify-content: center;
         font-size: 4.2rem;
-        flex-grow: 1;
+        flex: 1;
         overflow: hidden;
         padding-top: 20px;
       }
@@ -95,7 +96,7 @@
         justify-content: center;
         font-size: 3.4rem;
         overflow: hidden;
-        border-radius: 40px;
+        border-radius: 30px;
       }
 
       #navTop {
@@ -103,7 +104,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        margin-top: 10px;
+        align-items: center;
       }
 
       #nav {
@@ -112,7 +113,6 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 10px;
       }
 
       #btnOk {
@@ -353,8 +353,11 @@
       let arrayBig = [...arrayOrig];
       let arraySmall = [];
 
-      // viewport height
-      let wHeight = window.innerHeight;
+      // viewport size
+      let vWidth = window.innerWidth;
+      let vHeight = window.innerHeight;
+      document.getElementById("viewport").textContent = vWidth + " x " + vHeight;
+
       let wHeight100 = wHeight - 103;
       //document.getElementById("wrap").style.height = wHeight + "px";
 

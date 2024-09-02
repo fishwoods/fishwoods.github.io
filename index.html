@@ -440,11 +440,17 @@
         let check = shuffledArrayBig[x];
         if (arraySmall.includes(check)) {
           console.log("element is already in array");
+        } else if (arraySmall.length === 0 && indexOfArrayBig === 0) {
+          console.log("nothing to add in array");
         } else {
           arraySmall.push(shuffledArrayBig[x]);
         }
 
         document.querySelector("#btnMid").innerHTML = arraySmall.length;
+
+        for (const element of arraySmall) {
+          console.log(element);
+        }
       });
 
       // Show translation

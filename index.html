@@ -169,7 +169,7 @@
       #btnOk2 {
         width: 100px;
         height: 100px;
-        background: darkmagenta;
+        background: #832ab3;
         border-radius: 20px;
         display: flex;
         align-items: center;
@@ -179,7 +179,7 @@
 
       #btnMid2 {
         background: transparent;
-        border: 4px solid firebrick;
+        border: 4px solid #832ab3;
         border-radius: 100%;
         height: 92px;
         width: 92px;
@@ -192,7 +192,7 @@
       #btnNo2 {
         width: 100px;
         height: 100px;
-        background: sienna;
+        background: #380f61;
         border-radius: 20px;
         display: flex;
         align-items: center;
@@ -554,22 +554,22 @@
       document.querySelector("#btnPage2").addEventListener("click", showPage2);
 
       function showPage2() {
-        let navX = document.querySelector("#nav");
-        let nav2X = document.querySelector("#nav2");
-        if (nav2X.style.display === "none") {
-          nav2X.style.display = "flex";
-          navX.style.display = "none";
+        if (document.querySelector("#nav2").style.display === "none") {
+          document.querySelector("#nav2").style.display = "flex";
+          document.querySelector("#nav").style.display = "none";
           document.querySelector("#word0").innerHTML = "";
           document.querySelector("#word1").innerHTML = "";
           document.querySelector("#word2").innerHTML = "";
           document.querySelector("#word2").style.display = "none";
+          document.querySelector("body").style.background = "#17082d";
         } else {
-          nav2X.style.display = "none";
-          navX.style.display = "flex";
+          document.querySelector("#nav2").style.display = "none";
+          document.querySelector("#nav").style.display = "flex";
           document.querySelector("#word0").innerHTML = "";
           document.querySelector("#word1").innerHTML = "";
           document.querySelector("#word2").innerHTML = "";
           document.querySelector("#word2").style.display = "none";
+          document.querySelector("body").style.background = "";
         }
       }
 

@@ -221,7 +221,7 @@
     </style>
 
     <script>
-      var arrayOrig = [
+      let arrayOrig = [
         ["be", "би", "быть"],
         ["break", "брэйк", "разбить"],
         ["bring", "бринг", "принести"],
@@ -291,7 +291,7 @@
         ["bad", "бэд", "плохой"],
         ["best", "бэст", "лучший"],
         ["right", "райт", "правильный"],
-        ["only", "Онли", "единст-ный"],
+        ["only", "Онли", "только"],
         ["low", "лОу", "низкий"],
         ["early", "Ёрли", "рано"],
         ["late", "лЭйт", "поздно"],
@@ -349,40 +349,40 @@
       ];
 
       function cloneArray(arr) {
-        const clonedArr = [];
-        for (var i = 0; i < arr.length; i++) {
+        let clonedArr = [];
+        for (let i = 0; i < arr.length; i++) {
           clonedArr[i] = arr[i];
         }
         return clonedArr;
       }
 
-      var arrayBig = cloneArray(arrayOrig);
-      var arraySmall = [];
+      let arrayBig = cloneArray(arrayOrig);
+      let arraySmall = [];
 
       // viewport size
-      var vWidth = window.innerWidth;
-      var vHeight = window.innerHeight;
+      let vWidth = window.innerWidth;
+      let vHeight = window.innerHeight;
       document.querySelector("#viewport").innerHTML = vWidth + " x " + vHeight;
 
       // Fisher-Yates Sorting Algorithm
       function shuffle(array) {
-        for (var i = array.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
+        for (let i = array.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1));
           [array[i], array[j]] = [array[j], array[i]];
         }
         return array;
       }
-      const shuffledArrayBig = shuffle(arrayBig);
+      let shuffledArrayBig = shuffle(arrayBig);
 
       //1
       // Variable to keep track of the current index in the array
-      var indexOfArrayBig = 0;
+      let indexOfArrayBig = 0;
 
       // Get references to the button and display element
-      const btnOk = document.querySelector("#btnOk");
-      const displayWord0 = document.querySelector("#word0");
-      const displayWord1 = document.querySelector("#word1");
-      const displayWord2 = document.querySelector("#word2");
+      let btnOk = document.querySelector("#btnOk");
+      let displayWord0 = document.querySelector("#word0");
+      let displayWord1 = document.querySelector("#word1");
+      let displayWord2 = document.querySelector("#word2");
 
       // Add a click event listener to the button
       btnOk.addEventListener("click", function () {
@@ -407,9 +407,9 @@
       });
 
       //2
-      var indexOfArraySmall = 0;
+      let indexOfArraySmall = 0;
 
-      const btnMid = document.querySelector("#btnMid");
+      let btnMid = document.querySelector("#btnMid");
 
       btnMid.addEventListener("click", function () {
         indexOfArraySmall %= arraySmall.length;
@@ -425,11 +425,11 @@
       });
 
       //3
-      const btnNo = document.querySelector("#btnNo");
+      let btnNo = document.querySelector("#btnNo");
 
       btnNo.addEventListener("click", function () {
-        var x = indexOfArrayBig - 1;
-        var check = shuffledArrayBig[x];
+        let x = indexOfArrayBig - 1;
+        let check = shuffledArrayBig[x];
         if (arraySmall.includes(check)) {
           console.log("element is already in array");
         } else {
@@ -458,31 +458,31 @@
       }
 
       //create a Table Object
-      var table = document.createElement("table");
+      let table = document.createElement("table");
       table.setAttribute("id", "table");
       //table.setAttribute("style", "display: none");
       //iterate over every array(row) within tableArr
-      for (var row of arrayOrig) {
+      for (let row of arrayOrig) {
         //Insert a new row element into the table element
         table.insertRow();
         //Iterate over every index(cell) in each array(row)
-        for (var cell of row) {
+        for (let cell of row) {
           //While iterating over the index(cell)
           //insert a cell into the table element
-          var newCell = table.rows[table.rows.length - 1].insertCell();
+          let newCell = table.rows[table.rows.length - 1].insertCell();
           //add text to the created cell element
           newCell.innerHTML = cell;
         }
       }
       //append the compiled table to the DOM
-      const targetDiv = document.querySelector("#tableDiv");
+      let targetDiv = document.querySelector("#tableDiv");
       targetDiv.appendChild(table);
 
       // Show - hide table
       document.querySelector("#btnList").addEventListener("click", showTable);
 
       function showTable() {
-        var x = document.querySelector("#tableDiv");
+        let x = document.querySelector("#tableDiv");
         if (x.style.display === "none") {
           x.style.display = "block";
         } else {

@@ -20,6 +20,11 @@
         <div id="btnMid">0</div>
         <div id="btnOk">OK</div>
       </div>
+      <div id="nav2" style="display: none">
+        <div id="btnNo2">NO</div>
+        <div id="btnMid2">0</div>
+        <div id="btnOk2">OK</div>
+      </div>
       <div id="tableDiv" style="display: none"></div>
     </div>
 
@@ -146,6 +151,48 @@
         width: 100px;
         height: 100px;
         background: var(--btnNo);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+      }
+
+      #nav2 {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      #btnOk2 {
+        width: 100px;
+        height: 100px;
+        background: darkmagenta;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+      }
+
+      #btnMid2 {
+        background: transparent;
+        border: 4px solid firebrick;
+        border-radius: 100%;
+        height: 92px;
+        width: 92px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+      }
+
+      #btnNo2 {
+        width: 100px;
+        height: 100px;
+        background: sienna;
         border-radius: 20px;
         display: flex;
         align-items: center;
@@ -502,6 +549,54 @@
           x.style.display = "none";
         }
       }
+
+      // Show - hide Page 2
+      document.querySelector("#btnPage2").addEventListener("click", showPage2);
+
+      function showPage2() {
+        let navX = document.querySelector("#nav");
+        let nav2X = document.querySelector("#nav2");
+        if (nav2X.style.display === "none") {
+          nav2X.style.display = "flex";
+          navX.style.display = "none";
+          document.querySelector("#word0").innerHTML = "";
+          document.querySelector("#word1").innerHTML = "";
+          document.querySelector("#word2").innerHTML = "";
+          document.querySelector("#word2").style.display = "none";
+        } else {
+          nav2X.style.display = "none";
+          navX.style.display = "flex";
+          document.querySelector("#word0").innerHTML = "";
+          document.querySelector("#word1").innerHTML = "";
+          document.querySelector("#word2").innerHTML = "";
+          document.querySelector("#word2").style.display = "none";
+        }
+      }
+
+      // ============================= 2 ============================= //
+
+      //1-2
+      let navX = document.querySelector("#nav");
+      let nav2X = document.querySelector("#nav2");
+
+      let btnOk2 = document.querySelector("#btnOk2");
+      let displayWord02 = document.querySelector("#word0");
+      let displayWord12 = document.querySelector("#word2");
+
+      btnOk2.addEventListener("click", function () {
+        indexOfArrayBig %= shuffledArrayBig.length;
+
+        if (navX.style.display === "none") {
+          displayWord02.innerHTML = shuffledArrayBig[indexOfArrayBig][2];
+          displayWord12.innerHTML = shuffledArrayBig[indexOfArrayBig][0];
+        }
+
+        indexOfArrayBig++;
+
+        btnOk2.innerHTML = shuffledArrayBig.length - indexOfArrayBig + 1;
+
+        hideTranslation();
+      });
     </script>
   </body>
 </html>

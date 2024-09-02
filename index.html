@@ -355,7 +355,7 @@
       // viewport size
       let vWidth = window.innerWidth;
       let vHeight = window.innerHeight;
-      document.getElementById("viewport").textContent = vWidth + " x " + vHeight;
+      document.getElementById("viewport").innerHTML = vWidth + " x " + vHeight;
 
       //let wHeight100 = wHeight - 103;
       //document.getElementById("wrap").style.height = wHeight + "px";
@@ -387,9 +387,9 @@
         indexOfArrayBig %= shuffledArrayBig.length;
 
         // Set the text content of the display element to the current element in the array
-        displayWord0.textContent = shuffledArrayBig[indexOfArrayBig][0];
-        displayWord1.textContent = shuffledArrayBig[indexOfArrayBig][1];
-        displayWord2.textContent = shuffledArrayBig[indexOfArrayBig][2];
+        displayWord0.innerHTML = shuffledArrayBig[indexOfArrayBig][0];
+        displayWord1.innerHTML = shuffledArrayBig[indexOfArrayBig][1];
+        displayWord2.innerHTML = shuffledArrayBig[indexOfArrayBig][2];
 
         // Increment currentIndex to move to the next element on the next click
         indexOfArrayBig++;
@@ -410,9 +410,9 @@
       btnMid.addEventListener("click", () => {
         indexOfArraySmall %= arraySmall.length;
 
-        displayWord0.textContent = arraySmall[indexOfArraySmall][0];
-        displayWord1.textContent = arraySmall[indexOfArraySmall][1];
-        displayWord2.textContent = arraySmall[indexOfArraySmall][2];
+        displayWord0.innerHTML = arraySmall[indexOfArraySmall][0];
+        displayWord1.innerHTML = arraySmall[indexOfArraySmall][1];
+        displayWord2.innerHTML = arraySmall[indexOfArraySmall][2];
 
         indexOfArraySmall++;
 
@@ -467,7 +467,7 @@
           //insert a cell into the table element
           let newCell = table.rows[table.rows.length - 1].insertCell();
           //add text to the created cell element
-          newCell.textContent = cell;
+          newCell.innerHTML = cell;
         }
       }
       //append the compiled table to the DOM

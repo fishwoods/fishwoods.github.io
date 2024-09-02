@@ -362,10 +362,7 @@
       // viewport size
       var vWidth = window.innerWidth;
       var vHeight = window.innerHeight;
-      document.getElementById("viewport").innerHTML = vWidth + " x " + vHeight;
-
-      //var wHeight100 = wHeight - 103;
-      //document.getElementById("wrap").style.height = wHeight + "px";
+      document.querySelector("#viewport").innerHTML = vWidth + " x " + vHeight;
 
       // Fisher-Yates Sorting Algorithm
       function shuffle(array) {
@@ -382,10 +379,10 @@
       var indexOfArrayBig = 0;
 
       // Get references to the button and display element
-      const btnOk = document.getElementById("btnOk");
-      const displayWord0 = document.getElementById("word0");
-      const displayWord1 = document.getElementById("word1");
-      const displayWord2 = document.getElementById("word2");
+      const btnOk = document.querySelector("#btnOk");
+      const displayWord0 = document.querySelector("#word0");
+      const displayWord1 = document.querySelector("#word1");
+      const displayWord2 = document.querySelector("#word2");
 
       // Add a click event listener to the button
       btnOk.addEventListener("click", function () {
@@ -403,7 +400,7 @@
 
         btnOk.innerHTML = shuffledArrayBig.length - indexOfArrayBig + 1;
 
-        document.getElementById("indexOfArrayBig").innerHTML = indexOfArrayBig;
+        document.querySelector("#indexOfArrayBig").innerHTML = indexOfArrayBig;
         hideTranslation();
 
         indexOfArraySmall = 0;
@@ -412,7 +409,7 @@
       //2
       var indexOfArraySmall = 0;
 
-      const btnMid = document.getElementById("btnMid");
+      const btnMid = document.querySelector("#btnMid");
 
       btnMid.addEventListener("click", function () {
         indexOfArraySmall %= arraySmall.length;
@@ -423,12 +420,12 @@
 
         indexOfArraySmall++;
 
-        document.getElementById("indexOfArraySmall").innerHTML = indexOfArraySmall;
+        document.querySelector("#indexOfArraySmall").innerHTML = indexOfArraySmall;
         hideTranslation();
       });
 
       //3
-      const btnNo = document.getElementById("btnNo");
+      const btnNo = document.querySelector("#btnNo");
 
       btnNo.addEventListener("click", function () {
         var x = indexOfArrayBig - 1;
@@ -439,25 +436,25 @@
           arraySmall.push(shuffledArrayBig[x]);
         }
 
-        document.getElementById("btnMid").innerHTML = arraySmall.length;
+        document.querySelector("#btnMid").innerHTML = arraySmall.length;
       });
 
       // Show translation + make sure padding is 0 when page is empty
-      document.getElementById("word0").addEventListener("click", showTranslation);
-      document.getElementById("word1").addEventListener("click", showTranslation);
+      document.querySelector("#word0").addEventListener("click", showTranslation);
+      document.querySelector("#word1").addEventListener("click", showTranslation);
 
       function showTranslation() {
-        document.getElementById("word2").style.display = "flex";
+        document.querySelector("#word2").style.display = "flex";
         if (indexOfArrayBig === 0) {
-          document.getElementById("word2").style.paddingBottom = "0";
+          document.querySelector("#word2").style.paddingBottom = "0";
         } else {
-          document.getElementById("word2").style.paddingBottom = "5px";
+          document.querySelector("#word2").style.paddingBottom = "5px";
         }
       }
 
       // Hide translation
       function hideTranslation() {
-        document.getElementById("word2").style.display = "none";
+        document.querySelector("#word2").style.display = "none";
       }
 
       //create a Table Object
@@ -478,14 +475,14 @@
         }
       }
       //append the compiled table to the DOM
-      const targetDiv = document.getElementById("tableDiv");
+      const targetDiv = document.querySelector("#tableDiv");
       targetDiv.appendChild(table);
 
       // Show - hide table
-      document.getElementById("btnList").addEventListener("click", showTable);
+      document.querySelector("#btnList").addEventListener("click", showTable);
 
       function showTable() {
-        var x = document.getElementById("tableDiv");
+        var x = document.querySelector("#tableDiv");
         if (x.style.display === "none") {
           x.style.display = "block";
         } else {

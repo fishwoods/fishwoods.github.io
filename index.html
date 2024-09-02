@@ -255,7 +255,7 @@
         ["teach", "тич", "учить"],
         ["tell", "тэл", "сказать"],
         ["think", "синк", "думать"],
-        ["travel", "трЭвэл", "путеш-вать"],
+        ["travel", "трЭвэл", "путеш..."],
         ["try", "трай", "стараться"],
         ["write", "райт", "писать"],
         ["wait", "вэйт", "ждать"],
@@ -304,7 +304,6 @@
         ["current", "кАрэнт", "текущий"],
         ["wrong", "ронг", "неправильный"],
         ["common", "кОмон", "общий"],
-        ["natural", "нЭчурал", "естест-ный"],
         ["similar", "сИмилар", "похожий"],
         ["hot", "хот", "горячий"],
         ["happy", "хэпи", "счастливый"],
@@ -361,13 +360,13 @@
       //document.getElementById("wrap").style.height = wHeight + "px";
 
       // Fisher-Yates Sorting Algorithm
-      const shuffle = (array) => {
+      function shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
           [array[i], array[j]] = [array[j], array[i]];
         }
         return array;
-      };
+      }
       const shuffledArrayBig = shuffle(arrayBig);
 
       //1
@@ -381,7 +380,7 @@
       const displayWord2 = document.getElementById("word2");
 
       // Add a click event listener to the button
-      btnOk.addEventListener("click", () => {
+      btnOk.addEventListener("click", function () {
         // Use the % operator to calculate the remainder of currentIndex divided by the array length
         // This ensures that currentIndex stays within the bounds of the array, effectively cycling through the elements
         indexOfArrayBig %= shuffledArrayBig.length;
@@ -407,7 +406,7 @@
 
       const btnMid = document.getElementById("btnMid");
 
-      btnMid.addEventListener("click", () => {
+      btnMid.addEventListener("click", function () {
         indexOfArraySmall %= arraySmall.length;
 
         displayWord0.innerHTML = arraySmall[indexOfArraySmall][0];
@@ -423,7 +422,7 @@
       //3
       const btnNo = document.getElementById("btnNo");
 
-      btnNo.addEventListener("click", () => {
+      btnNo.addEventListener("click", function () {
         let x = indexOfArrayBig - 1;
         let check = shuffledArrayBig[x];
         if (arraySmall.includes(check)) {

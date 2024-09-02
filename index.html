@@ -221,7 +221,7 @@
     </style>
 
     <script>
-      let arrayOrig = [
+      var arrayOrig = [
         ["be", "би", "быть"],
         ["break", "брэйк", "разбить"],
         ["bring", "бринг", "принести"],
@@ -350,26 +350,26 @@
 
       function cloneArray(arr) {
         const clonedArr = [];
-        for (let i = 0; i < arr.length; i++) {
+        for (var i = 0; i < arr.length; i++) {
           clonedArr[i] = arr[i];
         }
         return clonedArr;
       }
 
-      let arrayBig = cloneArray(arrayOrig);
-      let arraySmall = [];
+      var arrayBig = cloneArray(arrayOrig);
+      var arraySmall = [];
 
       // viewport size
-      let vWidth = window.innerWidth;
-      let vHeight = window.innerHeight;
+      var vWidth = window.innerWidth;
+      var vHeight = window.innerHeight;
       document.getElementById("viewport").innerHTML = vWidth + " x " + vHeight;
 
-      //let wHeight100 = wHeight - 103;
+      //var wHeight100 = wHeight - 103;
       //document.getElementById("wrap").style.height = wHeight + "px";
 
       // Fisher-Yates Sorting Algorithm
       function shuffle(array) {
-        for (let i = array.length - 1; i > 0; i--) {
+        for (var i = array.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
           [array[i], array[j]] = [array[j], array[i]];
         }
@@ -379,7 +379,7 @@
 
       //1
       // Variable to keep track of the current index in the array
-      let indexOfArrayBig = 0;
+      var indexOfArrayBig = 0;
 
       // Get references to the button and display element
       const btnOk = document.getElementById("btnOk");
@@ -410,7 +410,7 @@
       });
 
       //2
-      let indexOfArraySmall = 0;
+      var indexOfArraySmall = 0;
 
       const btnMid = document.getElementById("btnMid");
 
@@ -431,8 +431,8 @@
       const btnNo = document.getElementById("btnNo");
 
       btnNo.addEventListener("click", function () {
-        let x = indexOfArrayBig - 1;
-        let check = shuffledArrayBig[x];
+        var x = indexOfArrayBig - 1;
+        var check = shuffledArrayBig[x];
         if (arraySmall.includes(check)) {
           console.log("element is already in array");
         } else {
@@ -461,18 +461,18 @@
       }
 
       //create a Table Object
-      let table = document.createElement("table");
+      var table = document.createElement("table");
       table.setAttribute("id", "table");
       //table.setAttribute("style", "display: none");
       //iterate over every array(row) within tableArr
-      for (let row of arrayOrig) {
+      for (var row of arrayOrig) {
         //Insert a new row element into the table element
         table.insertRow();
         //Iterate over every index(cell) in each array(row)
-        for (let cell of row) {
+        for (var cell of row) {
           //While iterating over the index(cell)
           //insert a cell into the table element
-          let newCell = table.rows[table.rows.length - 1].insertCell();
+          var newCell = table.rows[table.rows.length - 1].insertCell();
           //add text to the created cell element
           newCell.innerHTML = cell;
         }
@@ -485,7 +485,7 @@
       document.getElementById("btnList").addEventListener("click", showTable);
 
       function showTable() {
-        let x = document.getElementById("tableDiv");
+        var x = document.getElementById("tableDiv");
         if (x.style.display === "none") {
           x.style.display = "block";
         } else {

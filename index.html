@@ -3,607 +3,505 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>enWords</title>
-  </head>
-  <body>
-    <div id="wrap">
-      <div id="navTop">
-        <div id="btnPage2">●</div>
-        <div id="viewportDiv"></div>
-        <div id="btnList">w</div>
-      </div>
-      <div id="word0"></div>
-      <div id="word2"></div>
-      <div id="word1"></div>
-      <div id="nav">
-        <div id="btnNo">NO</div>
-        <div id="btnMid">0</div>
-        <div id="btnOk">OK</div>
-      </div>
-      <div id="nav2" style="display: none">
-        <!-- <div id="btnNo2">NO</div>
-        <div id="btnMid2">0</div> -->
-        <div id="btnOk2">OK</div>
-      </div>
-      <div id="tableDiv" style="display: none"></div>
-    </div>
-
-    <div id="indexOfArrayBig"></div>
-    <div id="indexOfArraySmall"></div>
-
+    <title>Word Display</title>
     <style>
-      html {
-        width: 100%;
-        height: 100%;
-        font-size: 15px;
-        font-weight: bold;
-        font-family: Sans-Serif;
-        text-align: center;
-        line-height: 1;
-        color: var(--txt);
-        --bgMain: linear-gradient(180deg, rgba(13, 9, 59, 1) 0%, rgba(8, 8, 44, 1) 100%);
-        --txt: #ffffff;
-        --btnOk: #4a2ab3;
-        --btnNo: #160f61;
-      }
-
       * {
         padding: 0;
         margin: 0;
+        color: white;
+        font-size: 15px;
+        font-family: sans-serif;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1;
+      }
+
+      html {
+        width: 100%;
+        height: 100%;
       }
 
       body {
+        width: 100%;
         height: 100%;
-        background: var(--bgMain);
         display: flex;
-        flex-direction: column;
-        align-items: center;
         justify-content: center;
-        overflow-x: hidden;
-      }
-
-      #wrap {
-        width: 340px;
-        display: flex;
-        flex-direction: column;
         align-items: center;
-        flex: 1;
+        background: #09092d;
       }
 
-      #word0 {
-        width: 100%;
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        font-size: 3rem;
-        color: rgba(255, 255, 255, 0.7);
-        flex: 1;
-        overflow: hidden;
-        padding-bottom: 20px;
-      }
-
-      #word1 {
-        width: 100%;
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        font-size: 3rem;
-        flex: 1;
-        overflow: hidden;
-        padding-top: 20px;
-      }
-
-      #word2 {
-        display: none;
-        background: var(--btnOk);
-        width: 100%;
-        height: 80px;
-        align-items: center;
-        justify-content: center;
-        font-size: 3rem;
-        overflow: hidden;
-        border-radius: 10px;
-        margin: 20px 0;
-      }
-
-      #navTop {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 10px;
-      }
-
-      #nav {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 10px;
-      }
-
-      #btnOk {
-        width: 100px;
-        height: 100px;
-        background: var(--btnOk);
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      button {
+        border: none;
+        outline: none;
+        cursor: pointer;
         font-size: 1.5rem;
+        border-radius: 15%;
       }
 
-      #btnMid {
-        background: transparent;
-        border: 4px solid var(--btnOk);
-        border-radius: 100%;
-        height: 92px;
-        width: 92px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-      }
-
-      #btnNo {
-        width: 100px;
-        height: 100px;
-        background: var(--btnNo);
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-      }
-
-      #nav2 {
-        width: 100%;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 10px;
-      }
-
-      #btnOk2 {
-        width: 100px;
-        height: 100px;
-        background: #832ab3;
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-      }
-
-      #btnMid2 {
-        background: transparent;
-        border: 4px solid #832ab3;
-        border-radius: 100%;
-        height: 92px;
-        width: 92px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-      }
-
-      #btnNo2 {
-        width: 100px;
-        height: 100px;
-        background: #380f61;
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-      }
-
-      #btnList {
-        border-radius: 10px;
-        background: var(--btnOk);
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      #btnPage2 {
-        border-radius: 10px;
-        background: var(--btnOk);
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      #btnOk:active,
-      #btnMid:active,
-      #btnNo:active,
-      #btnPage2:active,
-      #btnList:active {
+      button:active {
         opacity: 0.5;
       }
 
-      #indexOfArrayBig {
-        display: none;
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-
-      #indexOfArraySmall {
-        display: none;
-        position: absolute;
-        top: 30px;
-        left: 0;
-      }
-
-      #viewportDiv {
-        opacity: 0.3;
-      }
-
-      #tableDiv {
-        position: absolute;
-        top: 70px;
+      #wrapper {
         width: 340px;
-        height: calc(100% - 72px);
-        z-index: 2;
-        overflow-y: scroll;
-        overflow-x: hidden;
-        background: var(--bgMain);
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
       }
 
-      table {
-        table-layout: fixed;
+      #topNav {
         width: 100%;
-        font-size: 0.9rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
       }
 
-      td {
+      #topNav > button {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #4a2ab3;
+      }
+
+      #bottomNav {
         width: 100%;
-        padding: 10px 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
       }
 
-      tbody tr:nth-child(odd) {
-        background: rgba(255, 255, 255, 0.08);
+      #bottomNav > button {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #4a2ab3;
+      }
+
+      #div1,
+      #div3 {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        font-size: 3.2rem;
+        padding: 20px 0;
+      }
+
+      #div1 span {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        font-size: 3.2rem;
+      }
+
+      #div3 span {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        font-size: 3.2rem;
+      }
+
+      #div2 {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3.2rem;
+      }
+
+      #div2 span {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3.2rem;
+        background: #4a2ab3;
       }
     </style>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <div id="topNav">
+        <button id="mode1Button">1</button>
+        <button id="mode2Button">2</button>
+        <button id="mode3Button">3</button>
+        <button id="listOfWords">w</button>
+      </div>
+      <div id="div1"><span></span></div>
+      <div id="div2"><span></span></div>
+      <div id="div3"><span></span></div>
+      <div id="bottomNav">
+        <button id="addButton">NO</button>
+        <button id="countButton">0</button>
+        <button id="nextButton">OK</button>
+      </div>
+    </div>
 
     <script>
-      let arrayOrig = [
-        ["be", "би", "быть"],
-        ["break", "брэйк", "разбить"],
-        ["bring", "бринг", "принести"],
-        ["buy", "бай", "купить"],
-        ["call", "кол", "звонить"],
-        ["cost", "кост", "стоить"],
-        ["do", "ду", "делать"],
-        ["dream", "дрим", "мечтать"],
-        ["drink", "дринк", "пить"],
-        ["drive", "драйв", "водить"],
-        ["eat", "ит", "есть"],
-        ["feel", "фил", "чувствовать"],
-        ["forget", "фогЭт", "забыть"],
-        ["get", "гэт", "получить"],
-        ["give", "гив", "дать"],
-        ["have", "хэв", "иметь"],
-        ["know", "нОу", "знать"],
-        ["learn", "лёрн", "учиться"],
-        ["make", "мэйк", "сделать"],
-        ["meet", "мит", "встретить"],
-        ["pay", "пэй", "платить"],
-        ["play", "плэй", "играть"],
-        ["put", "пут", "класть"],
-        ["read", "рид", "читать"],
-        ["see", "си", "видеть"],
-        ["sell", "сэл", "продать"],
-        ["send", "сэнд", "слать"],
-        ["sleep", "слип", "спать"],
-        ["speak", "спик", "говорить"],
-        ["take", "тэйк", "брать"],
-        ["teach", "тич", "учить"],
-        ["tell", "тэл", "сказать"],
-        ["think", "синк", "думать"],
-        ["try", "трай", "стараться"],
-        ["write", "райт", "писать"],
-        ["wait", "вэйт", "ждать"],
-        ["become", "бикАм", "стать"],
-        ["begin", "бигИн", "начать"],
-        ["catch", "кэч", "ловить"],
-        ["choose", "чуз", "выбрать"],
-        ["come", "кам", "прийти"],
-        ["cut", "кат", "резать"],
-        ["find", "файнд", "найти"],
-        ["feed", "фид", "кормить"],
-        ["fly", "флай", "лететь"],
-        ["hear", "хИа", "слышать"],
-        ["hold", "холд", "держать"],
-        ["keep", "кип", "хранить"],
-        ["leave", "лив", "уйти"],
-        ["lie", "лай", "лежать"],
-        ["run", "ран", "бежать"],
-        ["show", "шОу", "показать"],
-        ["sit", "сит", "сидеть"],
-        ["swim", "свим", "плыть"],
-        ["wake", "вЭйк", "проснуться"],
-        ["wear", "вЭа", "носить"],
-        ["new", "нью", "новый"],
-        ["now", "нАу", "сейчас"],
-        ["high", "хай", "высокий"],
-        ["old", "олд", "старый"],
-        ["long", "лонг", "длинный"],
-        ["little", "литл", "маленький"],
-        ["bad", "бэд", "плохой"],
-        ["best", "бэст", "лучший"],
-        ["right", "райт", "правильный"],
-        ["only", "Онли", "только"],
-        ["low", "лОу", "низкий"],
-        ["early", "Ёрли", "рано"],
-        ["late", "лЭйт", "поздно"],
-        ["hard", "хард", "жесткий"],
-        ["strong", "стронг", "сильный"],
-        ["free", "фри", "свободный"],
-        ["full", "фул", "полный"],
-        ["recent", "рИсэнт", "недавний"],
-        ["open", "Оупн", "открыть"],
-        ["wrong", "ронг", "неправильный"],
-        ["similar", "сИмилар", "похожий"],
-        ["hot", "хот", "горячий"],
-        ["happy", "хэпи", "счастлив"],
-        ["ready", "рЭди", "готовый"],
-        ["dark", "дарк", "темный"],
-        ["cold", "колд", "холодный"],
-        ["main", "мэйн", "главный"],
-        ["huge", "хьюдж", "огромный"],
-        ["everything", "Эврисинг", "всё"],
-        ["nothing", "нАсинг", "ничего"],
-        ["every", "Эври", "каждый"],
-        ["thing", "синг", "вещь"],
-        ["expect", "экспЭкт", "ожидать"],
-        ["all", "ол", "все"],
-        ["happen", "хЭпн", "случиться"],
-        ["thread", "трэд", "нить"],
-        ["item", "Айтэм", "предмет"],
-        ["slow", "слОу", "медленный"],
-        ["fast", "фаст", "быстро"],
-        ["sure", "шУа", "конечно"],
-        ["already", "олрЭди", "уже"],
-        ["yet", "йЕт", "еще"],
-        ["ask", "аск", "спросить"],
-        ["change", "чейндж", "менять"],
-        ["move", "мув", "двигать"],
-        ["enjoy", "энджОй", "наслаждаться"],
-        ["sometimes", "самтАймс", "иногда"],
-        ["must", "маст", "должен"],
-        ["want", "вОнт", "хотеть"],
-        ["need", "нид", "нужно"],
-        ["week", "вик", "неделя"],
-        ["month", "манс", "месяц"],
-        ["hour", "Ауэр", "час"],
-        ["price", "прайс", "цена"],
-        ["agree", "эгрИ", "согласиться"],
-        ["look for", "лук фор", "искать"],
-        ["funny", "фАни", "забавный"],
-        ["fine", "файн", "хорошо"],
+      const wordsArray = [
+        ['be', 'би', 'быть'],
+        ['break', 'брэйк', 'разбить'],
+        ['bring', 'бринг', 'принести'],
+        ['buy', 'бай', 'купить'],
+        ['call', 'кол', 'звонить'],
+        ['cost', 'кост', 'стоить'],
+        ['do', 'ду', 'делать'],
+        ['dream', 'дрим', 'мечтать'],
+        ['drink', 'дринк', 'пить'],
+        ['drive', 'драйв', 'водить'],
+        ['eat', 'ит', 'кушать'],
+        ['feel', 'фил', 'чувствовать'],
+        ['forget', 'фогЭт', 'забыть'],
+        ['get', 'гэт', 'получить'],
+        ['give', 'гив', 'дать'],
+        ['have', 'хэв', 'иметь'],
+        ['know', 'нОу', 'знать'],
+        ['learn', 'лёрн', 'учиться'],
+        ['make', 'мэйк', 'сделать'],
+        ['meet', 'мит', 'встретить'],
+        ['pay', 'пэй', 'платить'],
+        ['play', 'плэй', 'играть'],
+        ['put', 'пут', 'класть'],
+        ['read', 'рид', 'читать'],
+        ['see', 'си', 'видеть'],
+        ['sell', 'сэл', 'продать'],
+        ['send', 'сэнд', 'слать'],
+        ['sleep', 'слип', 'спать'],
+        ['speak', 'спик', 'говорить'],
+        ['take', 'тэйк', 'брать'],
+        ['teach', 'тич', 'учить'],
+        ['tell', 'тэл', 'сказать'],
+        ['think', 'синк', 'думать'],
+        ['try', 'трай', 'стараться'],
+        ['write', 'райт', 'писать'],
+        ['wait', 'вэйт', 'ждать'],
+        ['become', 'бикАм', 'стать'],
+        ['begin', 'бигИн', 'начать'],
+        ['catch', 'кэч', 'ловить'],
+        ['choose', 'чуз', 'выбрать'],
+        ['come', 'кам', 'прийти'],
+        ['cut', 'кат', 'резать'],
+        ['find', 'файнд', 'найти'],
+        ['feed', 'фид', 'кормить'],
+        ['fly', 'флай', 'лететь'],
+        ['hear', 'хИа', 'слышать'],
+        ['hold', 'холд', 'держать'],
+        ['keep', 'кип', 'хранить'],
+        ['leave', 'лив', 'уйти'],
+        ['lie', 'лай', 'лежать'],
+        ['run', 'ран', 'бежать'],
+        ['show', 'шОу', 'показать'],
+        ['sit', 'сит', 'сидеть'],
+        ['swim', 'свим', 'плыть'],
+        ['tear', 'тИа', 'рвать'],
+        ['wake', 'вЭйк', 'проснуться'],
+        ['wear', 'вЭа', 'носить'],
+        ['win', 'вин', 'выиграть'],
+        ['new', 'нью', 'новый'],
+        ['now', 'нАу', 'сейчас'],
+        ['high', 'хай', 'высокий'],
+        ['old', 'олд', 'старый'],
+        ['long', 'лонг', 'длинный'],
+        ['little', 'литл', 'маленький'],
+        ['bad', 'бэд', 'плохой'],
+        ['best', 'бэст', 'лучший'],
+        ['right', 'райт', 'правильный'],
+        ['only', 'Онли', 'только'],
+        ['low', 'лОу', 'низкий'],
+        ['early', 'Ёрли', 'рано'],
+        ['late', 'лЭйт', 'поздно'],
+        ['hard', 'хард', 'жесткий'],
+        ['strong', 'стронг', 'сильный'],
+        ['free', 'фри', 'свободный'],
+        ['full', 'фул', 'полный'],
+        ['recent', 'рИсэнт', 'недавний'],
+        ['open', 'Оупн', 'открыть'],
+        ['wrong', 'ронг', 'неправильный'],
+        ['similar', 'сИмилар', 'похожий'],
+        ['hot', 'хот', 'горячий'],
+        ['happy', 'хэпи', 'счастлив'],
+        ['ready', 'рЭди', 'готовый'],
+        ['dark', 'дарк', 'темный'],
+        ['cold', 'колд', 'холодный'],
+        ['main', 'мэйн', 'главный'],
+        ['huge', 'хьюдж', 'огромный'],
+        ['everything', 'Эврисинг', 'всё'],
+        ['nothing', 'нАсинг', 'ничего'],
+        ['every', 'Эври', 'каждый'],
+        ['thing', 'синг', 'вещь'],
+        ['all', 'ол', 'все'],
+        ['happen', 'хЭпн', 'случиться'],
+        ['thread', 'трэд', 'нить'],
+        ['item', 'Айтэм', 'предмет'],
+        ['slow', 'слОу', 'медленный'],
+        ['fast', 'фаст', 'быстро'],
+        ['sure', 'шУа', 'конечно'],
+        ['already', 'олрЭди', 'уже'],
+        ['yet', 'йЕт', 'еще'],
+        ['ask', 'аск', 'спросить'],
+        ['spend', 'спэнд', 'тратить'],
+        ['change', 'чейндж', 'менять'],
+        ['move', 'мув', 'двигать'],
+        ['enjoy', 'энджОй', 'наслаждаться'],
+        ['sometimes', 'самтАймс', 'иногда'],
+        ['must', 'маст', 'должен'],
+        ['want', 'вОнт', 'хотеть'],
+        ['need', 'нид', 'нужно'],
+        ['week', 'вик', 'неделя'],
+        ['month', 'манс', 'месяц'],
+        ['hour', 'Ауэр', 'час'],
+        ['price', 'прайс', 'цена'],
+        ['agree', 'эгрИ', 'согласиться'],
+        ['look for', 'лук фор', 'искать'],
+        ['funny', 'фАни', 'забавный'],
+        ['fine', 'файн', 'хорошо'],
       ];
 
-      function cloneArray(arr) {
-        let clonedArr = [];
-        for (let i = 0; i < arr.length; i++) {
-          clonedArr[i] = arr[i];
-        }
-        return clonedArr;
-      }
+      // Create a deep copy of the wordsArray
+      const deepCopyArray = JSON.parse(JSON.stringify(wordsArray));
 
-      let arrayBig = cloneArray(arrayOrig);
-      let arraySmall = [];
+      // Sort the deep copy by the second word in each pair
+      deepCopyArray.sort(function (a, b) {
+        return a[1].localeCompare(b[1]);
+      });
 
-      // viewport size
-      let vWidth = window.innerWidth;
-      let vHeight = window.innerHeight;
-      document.querySelector("#viewportDiv").innerHTML = vWidth + " x " + vHeight;
-
-      // Fisher-Yates Sorting Algorithm
+      // Fisher-Yates shuffle algorithm
       function shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
-          let j = Math.floor(Math.random() * (i + 1));
+          const j = Math.floor(Math.random() * (i + 1));
           [array[i], array[j]] = [array[j], array[i]];
         }
-        return array;
       }
-      let shuffledArrayBig = shuffle(arrayBig);
 
-      //1
-      // Variable to keep track of the current index in the array
-      let indexOfArrayBig = 0;
+      // Shuffle    the sorted deep copy on page load
+      shuffle(deepCopyArray);
 
-      // Get references to the button and display element
-      let btnOk = document.querySelector("#btnOk");
-      let displayWord0 = document.querySelector("#word0");
-      let displayWord1 = document.querySelector("#word1");
-      let displayWord2 = document.querySelector("#word2");
+      let currentIndex = 0;
+      let newIndex = 0;
+      let mode = 1;
+      let newArray = [];
 
-      // Add a click event listener to the button
-      btnOk.addEventListener("click", function () {
-        // Use the % operator to calculate the remainder of currentIndex divided by the array length
-        // This ensures that currentIndex stays within the bounds of the array, effectively cycling through the elements
-        indexOfArrayBig %= shuffledArrayBig.length;
+      // Store references to the elements in variables
+      const body = document.querySelector('body');
+      const wrapper = document.getElementById('wrapper');
+      const topNav = document.getElementById('topNav');
+      const div1 = document.querySelector('#div1 span');
+      const div2 = document.querySelector('#div2 span');
+      const div3 = document.querySelector('#div3 span');
+      const div33 = document.querySelector('#div3');
+      const bottomNav = document.getElementById('bottomNav');
+      const mode1Button = document.getElementById('mode1Button');
+      const mode2Button = document.getElementById('mode2Button');
+      const mode3Button = document.getElementById('mode3Button');
+      const addButton = document.getElementById('addButton');
+      const countButton = document.getElementById('countButton');
+      const nextButton = document.getElementById('nextButton');
 
-        // Set the text content of the display element to the current element in the array
-        displayWord0.innerHTML = shuffledArrayBig[indexOfArrayBig][0];
-        displayWord1.innerHTML = shuffledArrayBig[indexOfArrayBig][1];
-        displayWord2.innerHTML = shuffledArrayBig[indexOfArrayBig][2];
+      hideThis(div2);
 
-        // Increment currentIndex to move to the next element on the next click
-        indexOfArrayBig++;
+      function mode1() {
+        div1.innerText = deepCopyArray[currentIndex][0];
+        div2.innerText = deepCopyArray[currentIndex][2];
+        div3.innerText = deepCopyArray[currentIndex][1];
+      }
 
-        btnOk.innerHTML = shuffledArrayBig.length - indexOfArrayBig + 1;
+      function newArrayMode() {
+        if (newArray.length === 0) {
+          console.log('no words yet');
+        } else {
+          div1.innerText = newArray[newIndex][0];
+          div2.innerText = newArray[newIndex][2];
+          div3.innerText = newArray[newIndex][1];
+        }
+      }
 
-        document.querySelector("#indexOfArrayBig").innerHTML = indexOfArrayBig;
-        hideTranslation();
+      function mode2() {
+        div1.innerText = deepCopyArray[currentIndex][2];
+        div2.innerText = deepCopyArray[currentIndex][0];
+        div3.innerText = deepCopyArray[currentIndex][1];
+      }
 
-        indexOfArraySmall = 0;
+      function mode3() {
+        div1.innerText = deepCopyArray[currentIndex][0].toUpperCase();
+        div2.innerText = deepCopyArray[currentIndex][1].toUpperCase();
+        div3.innerText = deepCopyArray[currentIndex][2].toUpperCase();
+      }
+
+      // ===== NEXT =====
+      nextButton.addEventListener('click', function () {
+        //
+        hideThis(div2);
+
+        if (currentIndex >= deepCopyArray.length) {
+          currentIndex = 0; // Reset to cycle through the words again
+        }
+
+        if (mode === 1) {
+          mode1();
+        } else if (mode === 2) {
+          mode2();
+        } else {
+          mode1();
+        }
+
+        if (mode === 2) {
+          hideThis(div3);
+          div1.addEventListener('click', function () {
+            showThis(div2);
+            showThis(div3);
+          });
+          div33.addEventListener('click', function () {
+            showThis(div2);
+            showThis(div3);
+          });
+        } else {
+          showThis(div3);
+        }
+
+        nextButton.innerHTML = deepCopyArray.length - currentIndex;
+
+        currentIndex++;
       });
 
-      //2
-      let indexOfArraySmall = 0;
+      // ===== COUNT =====
+      countButton.addEventListener('click', function () {
+        //
+        hideThis(div2);
 
-      let btnMid = document.querySelector("#btnMid");
+        if (newIndex >= newArray.length) {
+          newIndex = 0; // Reset to cycle through the words again
+        }
 
-      btnMid.addEventListener("click", function () {
-        indexOfArraySmall %= arraySmall.length;
+        if (mode === 1) {
+          newArrayMode();
+        } else {
+          newArrayMode();
+        }
 
-        displayWord0.innerHTML = arraySmall[indexOfArraySmall][0];
-        displayWord1.innerHTML = arraySmall[indexOfArraySmall][1];
-        displayWord2.innerHTML = arraySmall[indexOfArraySmall][2];
-
-        indexOfArraySmall++;
-
-        document.querySelector("#indexOfArraySmall").innerHTML = indexOfArraySmall;
-        hideTranslation();
+        newIndex++;
       });
 
-      //3
-      let btnNo = document.querySelector("#btnNo");
+      // ===== ADD =====
+      addButton.addEventListener('click', function () {
+        //
+        newIndex = 0;
 
-      btnNo.addEventListener("click", function () {
-        let x = indexOfArrayBig - 1;
-        let check = shuffledArrayBig[x];
-        if (arraySmall.includes(check)) {
-          console.log("element is already in array");
-        } else if (arraySmall.length === 0 && indexOfArrayBig === 0) {
-          console.log("nothing to add in array");
-        } else {
-          arraySmall.push(shuffledArrayBig[x]);
+        const currentWord =
+          deepCopyArray[
+            currentIndex > 0 ? currentIndex - 1 : deepCopyArray.length - 1
+          ][0];
+        if (
+          currentIndex > 0 &&
+          !newArray.some(function (pair) {
+            return pair[0] === currentWord;
+          })
+        ) {
+          newArray.push(deepCopyArray[currentIndex - 1]);
         }
 
-        document.querySelector("#btnMid").innerHTML = arraySmall.length;
-
-        for (const element of arraySmall) {
-          console.log(element);
-        }
+        updateCountButton(); // Update the count button text
+        console.log(newArray); // For debugging purposes
       });
 
-      // Show translation
-      document.querySelector("#word0").addEventListener("click", showTranslation);
-      document.querySelector("#word1").addEventListener("click", showTranslation);
-
-      function showTranslation() {
-        document.querySelector("#word2").style.display = "flex";
-        if (indexOfArrayBig === 0) {
-          document.querySelector("#word2").style.display = "none";
-        } else {
-        }
-      }
-
-      // Hide translation
-      function hideTranslation() {
-        document.querySelector("#word2").style.display = "none";
-      }
-
-      //create a Table Object
-      let table = document.createElement("table");
-      table.setAttribute("id", "table");
-      //table.setAttribute("style", "display: none");
-      //iterate over every array(row) within tableArr
-      for (let row of arrayOrig) {
-        //Insert a new row element into the table element
-        table.insertRow();
-        //Iterate over every index(cell) in each array(row)
-        for (let cell of row) {
-          //While iterating over the index(cell)
-          //insert a cell into the table element
-          let newCell = table.rows[table.rows.length - 1].insertCell();
-          //add text to the created cell element
-          newCell.innerHTML = cell;
-        }
-      }
-      //append the compiled table to the DOM
-      let targetDiv = document.querySelector("#tableDiv");
-      targetDiv.appendChild(table);
-
-      // Show - hide table
-      document.querySelector("#btnList").addEventListener("click", showTable);
-
-      function showTable() {
-        let x = document.querySelector("#tableDiv");
-        if (x.style.display === "none") {
-          x.style.display = "block";
-        } else {
-          x.style.display = "none";
-        }
-      }
-
-      // Show - hide Page 2
-      document.querySelector("#btnPage2").addEventListener("click", showPage2);
-
-      function showPage2() {
-        if (document.querySelector("#nav2").style.display === "none") {
-          document.querySelector("#nav2").style.display = "flex";
-          document.querySelector("#nav").style.display = "none";
-          document.querySelector("#word0").innerHTML = "";
-          document.querySelector("#word1").innerHTML = "";
-          document.querySelector("#word2").innerHTML = "";
-          document.querySelector("#word2").style.display = "none";
-          document.querySelector("body").style.background = "#17082d";
-          document.querySelector("#word2").style.background = "#832ab3";
-          document.querySelector("#btnPage2").style.background = "#832ab3";
-          document.querySelector("#btnList").style.background = "#832ab3";
-        } else {
-          document.querySelector("#nav2").style.display = "none";
-          document.querySelector("#nav").style.display = "flex";
-          document.querySelector("#word0").innerHTML = "";
-          document.querySelector("#word1").innerHTML = "";
-          document.querySelector("#word2").innerHTML = "";
-          document.querySelector("#word2").style.display = "none";
-          document.querySelector("body").style.background = "";
-          document.querySelector("#word2").style.background = "";
-          document.querySelector("#btnPage2").style.background = "";
-          document.querySelector("#btnList").style.background = "";
-        }
-      }
-
-      // ============================= 2 ============================= //
-
-      //1-2
-
-      document.querySelector("#btnOk2").addEventListener("click", function () {
-        indexOfArrayBig %= shuffledArrayBig.length;
-        document.querySelector("#word1").innerHTML = "";
-
-        if (document.querySelector("#nav").style.display === "none") {
-          document.querySelector("#word0").innerHTML = shuffledArrayBig[indexOfArrayBig][2];
-          document.querySelector("#word2").innerHTML = shuffledArrayBig[indexOfArrayBig][0];
-          console.log(indexOfArrayBig);
-
-          document.querySelector("#word0").addEventListener("click", showTranslation);
-          document.querySelector("#word2").addEventListener("click", showTranslation);
-          document.querySelector("#word1").addEventListener("click", showTranslation);
-
-          function showTranslation() {
-            document.querySelector("#word1").innerHTML = shuffledArrayBig[indexOfArrayBig - 1][1];
-            console.log(indexOfArrayBig);
-            document.querySelector("#word2").style.display = "flex";
-            document.querySelector("#word1").style.display = "flex";
-            if (indexOfArrayBig === 0) {
-              document.querySelector("#word2").style.display = "none";
-            } else {
-            }
-          }
-        }
-
-        indexOfArrayBig++;
-
-        document.querySelector("#btnOk2").innerHTML = shuffledArrayBig.length - indexOfArrayBig + 1;
-
-        hideTranslation();
+      mode1Button.addEventListener('click', function () {
+        mode = 1;
+        colorMode1();
+        clearAll();
+        updateCountButton();
       });
+
+      mode2Button.addEventListener('click', function () {
+        mode = 2;
+        colorMode2();
+        clearAll();
+        updateCountButton();
+      });
+
+      mode3Button.addEventListener('click', function () {
+        mode = 3;
+      });
+
+      // Show div2 when div1 or div3 is clicked
+      div1.addEventListener('click', function () {
+        showThis(div2);
+      });
+
+      div3.addEventListener('click', function () {
+        showThis(div2);
+      });
+
+      // hide
+      function hideThis(me) {
+        me.style.display = 'none';
+      }
+
+      // show
+      function showThis(me) {
+        me.style.display = 'flex';
+      }
+
+      function updateCountButton() {
+        countButton.innerText = newArray.length;
+      }
+
+      // clear everything
+      function clearAll() {
+        currentIndex = 0;
+        newIndex = 0;
+        newArray.length = 0;
+        div1.innerHTML = '';
+        div2.innerHTML = '';
+        div3.innerHTML = '';
+        nextButton.innerHTML = 'OK';
+        hideThis(div2);
+      }
+
+      // color scheme mode 1
+      function colorMode1() {
+        body.style.background = '';
+        addButton.style.background = '';
+        nextButton.style.background = '';
+        countButton.style.background = '';
+        mode1Button.style.background = '';
+        mode2Button.style.background = '';
+        mode3Button.style.background = '';
+        div2.style.background = '';
+      }
+
+      // color scheme mode 2
+      function colorMode2() {
+        body.style.background = '#17092d';
+        addButton.style.background = '#822ab2';
+        nextButton.style.background = '#822ab2';
+        countButton.style.background = '#822ab2';
+        mode1Button.style.background = '#822ab2';
+        mode2Button.style.background = '#822ab2';
+        mode3Button.style.background = '#822ab2';
+        div2.style.background = '#822ab2';
+      }
+
+      /*   function hideTranslation() {
+        div2.style.display = 'none';
+      } */
+
+      for (let e of deepCopyArray) {
+        console.log(e);
+      }
     </script>
   </body>
 </html>

@@ -213,6 +213,32 @@
     </div>
 
     <script>
+      let lastActivityTime = Date.now();
+      let reloadTimeout;
+
+      document.addEventListener('touchstart', () => {
+        lastActivityTime = Date.now();
+        clearTimeout(reloadTimeout);
+      });
+
+      document.addEventListener('mousemove', () => {
+        lastActivityTime = Date.now();
+        clearTimeout(reloadTimeout);
+      });
+
+      setInterval(() => {
+        const currentTime = Date.now();
+        const elapsedTime = currentTime - lastActivityTime;
+
+        if (elapsedTime >= 3600000) {
+          // 1 hour in milliseconds
+          reloadTimeout = setTimeout(() => {
+            window.location.reload();
+          }, 1000); // Delay the reload for 1 second
+        }
+      }, 60000); // Check every minute
+
+      // array
       const wordsArray = [
         ['be', 'би', 'быть'],
         ['bring', 'бринг', 'принести'],

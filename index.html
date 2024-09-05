@@ -126,7 +126,6 @@
         justify-content: center;
         align-items: center;
         flex: 1;
-        font-size: 3.2rem;
       }
 
       #div1 span {
@@ -152,7 +151,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 3.2rem;
       }
 
       #div2 span {
@@ -215,6 +213,7 @@
         </div>
       </div>
     </div>
+    <input type="hidden" id="modeInput" value="1" />
     <div id="tableDiv" style="display: none"></div>
     <script>
       let lastActivityTime = Date.now();
@@ -443,9 +442,9 @@
       const addButton = document.getElementById('addButton');
       const countButton = document.getElementById('countButton');
       const nextButton = document.getElementById('nextButton');
+      const modeInput = document.getElementById('modeInput');
 
       hideThis(div2);
-      console.log(currentIndex);
 
       function mode1() {
         div1.innerText = deepCopyArray[currentIndex][0];
@@ -506,43 +505,39 @@
           currentIndex = 0; // Reset to cycle through the words again
         }
 
-        if (mode === 1) {
+        console.log(modeInput.value);
+
+        if (modeInput.value === '1') {
           mode1();
           nextButton.innerHTML = deepCopyArray.length - currentIndex;
-        } else if (mode === 2) {
+        } else if (modeInput.value === '2') {
           mode2();
           nextButton.innerHTML = deepCopyArray.length - currentIndex;
-        } else if (mode === 3) {
+        } else if (modeInput.value === '3') {
           mode3();
           nextButton.innerHTML = wordsArrayQuestion.length - currentIndex;
-        } else if (mode === 4) {
+        } else if (modeInput.value === '4') {
           mode4();
           nextButton.innerHTML = 'OK';
         }
 
-        if (mode === 2) {
-          hideThis(div3);
-          div1.addEventListener('click', function () {
-            showThis(div2);
-            showThis(div3);
-          });
-          div33.addEventListener('click', function () {
-            showThis(div2);
-            showThis(div3);
-          });
-        } else {
+        if (modeInput.value === '1' || modeInput.value === '3') {
+          showThis(div1);
           showThis(div3);
+          showThis(div33);
+          hideThis(div2);
         }
 
-        if (mode === 4) {
+        if (modeInput.value === '2') {
+          hideThis(div3);
           hideThis(div33);
-        } else {
-          showThis(div33);
+        }
+
+        if (modeInput.value === '4') {
+          hideThis(div33);
         }
 
         currentIndex++;
-
-        console.log(currentIndex);
       });
 
       // ===== COUNT =====
@@ -554,10 +549,11 @@
           newIndex = 0; // Reset to cycle through the words again
         }
 
-        if (mode === 1) {
+        if (modeInput.value === '1') {
           newArrayMode();
-        } else if (mode === 2) {
+        } else if (modeInput.value === '2') {
           hideThis(div3);
+          hideThis(div33);
           newArrayMode2();
         } else {
           newArrayMode();
@@ -585,76 +581,78 @@
         }
 
         updateCountButton(); // Update the count button text
-        console.log(newArray); // For debugging purposes
       });
 
-      // start 1
-      function startMode1() {
-        mode = 1;
+      //remove ALL listeners
+      function listenersClear() {
+        document.querySelectorAll('*').forEach((element) => {
+          element.removeEventListener('click', handleEvent); // Replace 'click' with the desired event type
+        });
+      }
+
+      mode1Button.addEventListener('click', function () {
+        modeInput.value = 1;
         colorMode1();
         clearAll();
         updateCountButton();
         addButton.style.display = 'flex';
         countButton.style.display = 'flex';
-      }
+      });
 
-      // start 2
-      function startMode2() {
-        mode = 2;
+      mode2Button.addEventListener('click', function () {
+        modeInput.value = 2;
         colorMode2();
         clearAll();
         updateCountButton();
         addButton.style.display = 'flex';
         countButton.style.display = 'flex';
-      }
+      });
 
-      // start 3
-      function startMode3() {
-        mode = 3;
+      mode3Button.addEventListener('click', function () {
+        modeInput.value = 3;
         colorMode3();
         clearAll();
         updateCountButton();
         addButton.style.display = 'none';
         countButton.style.display = 'none';
-      }
+      });
 
-      // start 4
-      function startMode4() {
-        mode = 4;
+      mode4Button.addEventListener('click', function () {
+        modeInput.value = 4;
         colorMode4();
         clearAll();
         updateCountButton();
         addButton.style.display = 'none';
         countButton.style.display = 'none';
-        div1.removeEventListener('click', function () {});
-      }
 
-      mode1Button.addEventListener('click', function () {
-        startMode1();
+        /*    if (modeInput.value === '4') {
+          div1.style.fontSize = '2.5rem';
+        } else if (modeInput.value !== '4') {
+          div1.style.fontSize = '3.2rem';
+        } */
       });
 
-      mode2Button.addEventListener('click', function () {
-        startMode2();
-      });
-
-      mode3Button.addEventListener('click', function () {
-        startMode3();
-      });
-
-      mode4Button.addEventListener('click', function () {
-        startMode4();
-      });
-
-      // Show div2 when div1 or div3 is clicked
+      // Show translation
       div1.addEventListener('click', function () {
-        if (currentIndex !== 0) {
+        if (modeInput.value === '1' || modeInput.value === '3') {
           showThis(div2);
+        } else if (modeInput.value === '2') {
+          showThis(div2);
+          showThis(div3);
+          showThis(div33);
         }
       });
 
       div3.addEventListener('click', function () {
-        if (currentIndex !== 0) {
+        if (modeInput.value === '1' || modeInput.value === '3') {
           showThis(div2);
+        }
+      });
+
+      div33.addEventListener('click', function () {
+        if (modeInput.value === '2') {
+          showThis(div2);
+          showThis(div3);
         }
       });
 

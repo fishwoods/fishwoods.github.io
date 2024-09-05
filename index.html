@@ -421,6 +421,9 @@
       const addButton = document.getElementById('addButton');
       const countButton = document.getElementById('countButton');
       const nextButton = document.getElementById('nextButton');
+      const htmlQ = document.querySelector('html');
+      
+      
 
       hideThis(div2);
       console.log(currentIndex);
@@ -632,23 +635,20 @@
 
       // color scheme mode 1
       function colorMode1() {
-        body.style.background = '';
-        nextButton.style.background = '';
-        div2.style.background = '';
+        htmlQ.style.filter = '';
+        
       }
 
       // color scheme mode 2
       function colorMode2() {
-        body.style.background = '#23003d';
-        nextButton.style.background = '#683192';
-        div2.style.background = '#683192';
+        htmlQ.style.filter = 'hue-rotate(30deg)';
+        
       }
 
       // color scheme mode 3
       function colorMode3() {
-        body.style.background = '#003312';
-        nextButton.style.background = '#105E2B';
-        div2.style.background = '#105E2B';
+        htmlQ.style.filter = 'hue-rotate(250deg)';
+        
       }
 
       //create a Table Object

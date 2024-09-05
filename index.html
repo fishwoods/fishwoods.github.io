@@ -50,6 +50,7 @@
         align-items: center;
         flex-direction: column;
       }
+
       #wrapper {
         width: 340px;
         height: 100%;
@@ -180,7 +181,7 @@
         z-index: 2;
         overflow-y: scroll;
         overflow-x: hidden;
-        background: #00000029;
+        background: #00004f;
       }
 
       table {
@@ -677,13 +678,10 @@
 
       function showTable() {
         let x = document.querySelector('#tableDiv');
-        let y = document.querySelector('#blur');
         if (x.style.display === 'none') {
           x.style.display = 'block';
-          y.style.filter = 'blur(300px)';
         } else {
           x.style.display = 'none';
-          y.style.filter = '';
         }
       }
 

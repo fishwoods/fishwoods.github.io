@@ -13,7 +13,7 @@
         font-family: sans-serif;
         font-weight: bold;
         text-align: center;
-        line-height: 1;
+        line-height: 1.3;
       }
 
       html {
@@ -70,22 +70,17 @@
       }
 
       #topNav > button {
-        width: 50px;
-        height: 50px;
+        width: 44px;
+        height: 44px;
         display: flex;
         justify-content: center;
         align-items: center;
       }
 
-      #mode1Button {
-        background: #ffffff1a;
-      }
-
-      #mode2Button {
-        background: #ffffff1a;
-      }
-
-      #mode3Button {
+      #mode1Button,
+      #mode2Button,
+      #mode3Button,
+      #mode4Button {
         background: #ffffff1a;
       }
 
@@ -132,7 +127,6 @@
         align-items: center;
         flex: 1;
         font-size: 3.2rem;
-        padding: 20px 0;
       }
 
       #div1 span {
@@ -140,7 +134,7 @@
         height: 100%;
         display: flex;
         justify-content: center;
-        align-items: flex-end;
+        align-items: center;
         font-size: 3.2rem;
       }
 
@@ -149,7 +143,7 @@
         height: 100%;
         display: flex;
         justify-content: center;
-        align-items: flex-start;
+        align-items: center;
         font-size: 3.2rem;
       }
 
@@ -207,6 +201,7 @@
         <button id="mode1Button">1</button>
         <button id="mode2Button">2</button>
         <button id="mode3Button">3</button>
+        <button id="mode4Button">4</button>
         <button id="listOfWords">w</button>
       </div>
       <div id="blur">
@@ -379,6 +374,24 @@
         ['whose', 'хуз', 'чей'],
       ];
 
+      const wordsArrayLong = [
+        ['Я ищу автобусную остановку. Скажите пожалуйста, где она.'],
+        ['Можно посмотреть ту коричневую сумку, пожалуйста?'],
+        ['Сколько стоит этот пиджак?'],
+        ['Отлично, наконец-то пятница. Время идти домой.'],
+        ['Сколько остановок до 11-й авеню?'],
+        ['Скажите мне, пожалуйста, когда мы прибываем в Монреаль?'],
+        ['Мне нужен билет на сегодня, где я могу купить его?'],
+        ['Извини, я тебя не расслышал. Скажи снова пожалуйста.'],
+        ['Могу я спросить у вас что-то? Как называется это дерево?'],
+        ['Спасибо за информацию.'],
+        ['Я учу английский каждый день, но не на уикенд.'],
+        ['Я согласна. Первый сезон этого тв шоу был лучший.'],
+        ['Я недавно поменяла нитки от белой к зеленой. Все работает хорошо.'],
+        ['Я могу отнести коробку в комнату завтра или сейчас.'],
+        ['Клиент ждет тебя возле кухни'],
+      ];
+
       // Create a deep copy of the wordsArray
       const deepCopyArray = JSON.parse(JSON.stringify(wordsArray));
 
@@ -402,6 +415,7 @@
       // Shuffle the sorted deep copy on page load
       shuffle(deepCopyArray);
       shuffle(wordsArrayQuestion);
+      shuffle(wordsArrayLong);
 
       let currentIndex = 0;
       let newIndex = 0;
@@ -409,22 +423,23 @@
       let newArray = [];
 
       // Store references to the elements in variables
+      const htmlQ = document.querySelector('html');
       const body = document.querySelector('body');
       const wrapper = document.getElementById('wrapper');
-      const topNav = document.getElementById('topNav');
       const div1 = document.querySelector('#div1 span');
       const div2 = document.querySelector('#div2 span');
       const div3 = document.querySelector('#div3 span');
       const div33 = document.querySelector('#div3');
-      const bottomNav = document.getElementById('bottomNav');
+      const topNav = document.getElementById('topNav');
       const mode1Button = document.getElementById('mode1Button');
       const mode2Button = document.getElementById('mode2Button');
       const mode3Button = document.getElementById('mode3Button');
+      const mode4Button = document.getElementById('mode4Button');
       const listOfWords = document.getElementById('listOfWords');
+      const bottomNav = document.getElementById('bottomNav');
       const addButton = document.getElementById('addButton');
       const countButton = document.getElementById('countButton');
       const nextButton = document.getElementById('nextButton');
-      const htmlQ = document.querySelector('html');
 
       hideThis(div2);
       console.log(currentIndex);
@@ -471,6 +486,14 @@
         div3.innerText = wordsArrayQuestion[currentIndex][1];
       }
 
+      function mode4() {
+        if (currentIndex >= wordsArrayLong.length) {
+          currentIndex = 0;
+        }
+
+        div1.innerText = wordsArrayLong[currentIndex][0];
+      }
+
       // ===== NEXT =====
       nextButton.addEventListener('click', function () {
         //
@@ -489,6 +512,9 @@
         } else if (mode === 3) {
           mode3();
           nextButton.innerHTML = wordsArrayQuestion.length - currentIndex;
+        } else if (mode === 4) {
+          mode4();
+          nextButton.innerHTML = 'OK';
         }
 
         if (mode === 2) {
@@ -503,6 +529,12 @@
           });
         } else {
           showThis(div3);
+        }
+
+        if (mode === 4) {
+          hideThis(div33);
+        } else {
+          showThis(div33);
         }
 
         currentIndex++;
@@ -583,6 +615,17 @@
         countButton.style.display = 'none';
       }
 
+      // start 4
+      function startMode4() {
+        mode = 4;
+        colorMode4();
+        clearAll();
+        updateCountButton();
+        addButton.style.display = 'none';
+        countButton.style.display = 'none';
+        div1.removeEventListener('click', function () {});
+      }
+
       mode1Button.addEventListener('click', function () {
         startMode1();
       });
@@ -593,6 +636,10 @@
 
       mode3Button.addEventListener('click', function () {
         startMode3();
+      });
+
+      mode4Button.addEventListener('click', function () {
+        startMode4();
       });
 
       // Show div2 when div1 or div3 is clicked
@@ -649,6 +696,11 @@
         htmlQ.style.filter = 'hue-rotate(250deg)';
       }
 
+      // color scheme mode 4
+      function colorMode4() {
+        htmlQ.style.filter = 'hue-rotate(140deg)';
+      }
+
       //create a Table Object
       let table = document.createElement('table');
       table.setAttribute('id', 'table');
@@ -683,12 +735,12 @@
       }
 
       /*   function hideTranslation() {
-        div2.style.display = 'none';
-      } */
+              div2.style.display = 'none';
+            } */
 
       /*    for (let e of deepCopyArray) {
-        console.log(e);
-      } */
+              console.log(e);
+            } */
     </script>
   </body>
 </html>

@@ -54,7 +54,7 @@
       #topNav {
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         flex-direction: row;
         margin-top: 10px;
@@ -88,7 +88,7 @@
       #bottomNav {
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         flex-direction: row;
         margin-bottom: 10px;
@@ -354,6 +354,20 @@
         ['fine', 'файн', 'хорошо'],
       ];
 
+      const wordsArrayQuestion = [
+        ['how many', 'хАу мЭни', 'сколько (исч)'],
+        ['how much', 'хАу мач', 'сколько'],
+        ['what for', 'ват фор', 'зачем'],
+        ['when', 'вэн', 'когда'],
+        ['where', 'вЭа', 'где, куда'],
+        ['who', 'ху', 'кто'],
+        ['why', 'вай', 'почему'],
+        ['what', 'ват', 'что'],
+        ['which', 'уИч', 'который'],
+        ['how', 'хАу', 'как'],
+        ['whose', 'хуз', 'чей'],
+      ];
+
       // Create a deep copy of the wordsArray
       const deepCopyArray = JSON.parse(JSON.stringify(wordsArray));
 
@@ -374,8 +388,9 @@
         }
       }
 
-      // Shuffle    the sorted deep copy on page load
+      // Shuffle the sorted deep copy on page load
       shuffle(deepCopyArray);
+      shuffle(wordsArrayQuestion);
 
       let currentIndex = 0;
       let newIndex = 0;
@@ -435,7 +450,13 @@
       }
 
       function mode3() {
-        console.log('wip');
+        if (currentIndex >= wordsArrayQuestion.length) {
+          currentIndex = 0;
+        }
+
+        div1.innerText = wordsArrayQuestion[currentIndex][0];
+        div2.innerText = wordsArrayQuestion[currentIndex][2];
+        div3.innerText = wordsArrayQuestion[currentIndex][1];
       }
 
       // ===== NEXT =====
@@ -449,10 +470,13 @@
 
         if (mode === 1) {
           mode1();
+          nextButton.innerHTML = deepCopyArray.length - currentIndex;
         } else if (mode === 2) {
           mode2();
-        } else {
+          nextButton.innerHTML = deepCopyArray.length - currentIndex;
+        } else if (mode === 3) {
           mode3();
+          nextButton.innerHTML = wordsArrayQuestion.length - currentIndex;
         }
 
         if (mode === 2) {
@@ -468,8 +492,6 @@
         } else {
           showThis(div3);
         }
-
-        nextButton.innerHTML = deepCopyArray.length - currentIndex;
 
         currentIndex++;
 
@@ -525,6 +547,8 @@
         colorMode1();
         clearAll();
         updateCountButton();
+        addButton.style.display = 'flex';
+        countButton.style.display = 'flex';
       }
 
       // start 2
@@ -533,6 +557,8 @@
         colorMode2();
         clearAll();
         updateCountButton();
+        addButton.style.display = 'flex';
+        countButton.style.display = 'flex';
       }
 
       // start 3
@@ -541,6 +567,8 @@
         colorMode3();
         clearAll();
         updateCountButton();
+        addButton.style.display = 'none';
+        countButton.style.display = 'none';
       }
 
       mode1Button.addEventListener('click', function () {

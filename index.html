@@ -112,7 +112,7 @@
       }
 
       #nextButton {
-        background: #1c0079;
+        background: #313192;
       }
 
       #div1,
@@ -159,7 +159,7 @@
         justify-content: center;
         align-items: center;
         font-size: 3.2rem;
-        background: #1c0079;
+        background: #313192;
         border-radius: 15px;
       }
 
@@ -188,7 +188,7 @@
       }
 
       tbody tr:nth-child(odd) {
-        background: rgba(255, 255, 255, 0.08);
+        background: #ffffff17;
       }
     </style>
   </head>
@@ -535,6 +535,14 @@
         updateCountButton();
       }
 
+      // start 3
+      function startMode3() {
+        mode = 3;
+        colorMode3();
+        clearAll();
+        updateCountButton();
+      }
+
       mode1Button.addEventListener('click', function () {
         startMode1();
       });
@@ -544,7 +552,7 @@
       });
 
       mode3Button.addEventListener('click', function () {
-        startMode1();
+        startMode3();
       });
 
       // Show div2 when div1 or div3 is clicked
@@ -589,20 +597,22 @@
       // color scheme mode 1
       function colorMode1() {
         body.style.background = '';
-        addButton.style.background = '';
         nextButton.style.background = '';
-        countButton.style.background = '';
-        mode1Button.style.background = '';
-        mode2Button.style.background = '';
-        mode3Button.style.background = '';
         div2.style.background = '';
       }
 
       // color scheme mode 2
       function colorMode2() {
         body.style.background = '#23003d';
-        nextButton.style.background = '#822ab2';
-        div2.style.background = '#822ab2';
+        nextButton.style.background = '#683192';
+        div2.style.background = '#683192';
+      }
+
+      // color scheme mode 3
+      function colorMode3() {
+        body.style.background = '#003312';
+        nextButton.style.background = '#105E2B';
+        div2.style.background = '#105E2B';
       }
 
       //create a Table Object

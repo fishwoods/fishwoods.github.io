@@ -82,7 +82,7 @@
 
       #listOfWords {
         background: transparent;
-        border: 2px solid #ffffff94;
+        border: 2px solid #ffffff70;
       }
 
       #bottomNav {
@@ -108,7 +108,7 @@
 
       #countButton {
         background: transparent;
-        border: 2px solid #ffffff94;
+        border: 2px solid #ffffff70;
       }
 
       #nextButton {
@@ -185,7 +185,6 @@
     <script>
       const wordsArray = [
         ['be', 'би', 'быть'],
-        ['break', 'брэйк', 'разбить'],
         ['bring', 'бринг', 'принести'],
         ['buy', 'бай', 'купить'],
         ['call', 'кол', 'звонить'],
@@ -226,20 +225,18 @@
         ['come', 'кам', 'прийти'],
         ['cut', 'кат', 'резать'],
         ['find', 'файнд', 'найти'],
-        ['feed', 'фид', 'кормить'],
+        ['dryer', 'дрАер', 'сушилка'],
         ['fly', 'флай', 'лететь'],
         ['hear', 'хИа', 'слышать'],
         ['hold', 'холд', 'держать'],
         ['later', 'лЭйтэр', 'позже'],
-        ['leave', 'лив', 'уйти'],
+        ['leave', 'лив', 'оставить'],
         ['lie', 'лай', 'лежать'],
         ['run', 'ран', 'бежать'],
         ['show', 'шОу', 'показать'],
         ['sit', 'сит', 'сидеть'],
         ['swim', 'свим', 'плыть'],
-        ['tear', 'тИа', 'рвать'],
         ['wake', 'вЭйк', 'проснуться'],
-        ['wear', 'вЭа', 'носить'],
         ['win', 'вин', 'выиграть'],
         ['new', 'нью', 'новый'],
         ['now', 'нАу', 'сейчас'],
@@ -359,6 +356,16 @@
         }
       }
 
+      function newArrayMode2() {
+        if (newArray.length === 0) {
+          console.log('no words yet');
+        } else {
+          div1.innerText = newArray[newIndex][2];
+          div2.innerText = newArray[newIndex][0];
+          div3.innerText = newArray[newIndex][1];
+        }
+      }
+
       function mode2() {
         div1.innerText = deepCopyArray[currentIndex][2];
         div2.innerText = deepCopyArray[currentIndex][0];
@@ -418,6 +425,9 @@
 
         if (mode === 1) {
           newArrayMode();
+        } else if (mode === 2) {
+          hideThis(div3);
+          newArrayMode2();
         } else {
           newArrayMode();
         }

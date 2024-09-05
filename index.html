@@ -162,6 +162,34 @@
         background: #1c0079;
         border-radius: 15px;
       }
+
+      #tableDiv {
+        display: none;
+        position: absolute;
+        top: 70px;
+        width: 340px;
+        height: calc(100% - 72px);
+        z-index: 2;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        background: #00000029;
+        backdrop-filter: blur(999px);
+      }
+
+      table {
+        table-layout: auto;
+        width: 100%;
+        font-size: 0.9rem;
+      }
+
+      td {
+        width: 100%;
+        padding: 10px 5px;
+      }
+
+      tbody tr:nth-child(odd) {
+        background: rgba(255, 255, 255, 0.08);
+      }
     </style>
   </head>
 
@@ -181,6 +209,7 @@
         <button id="countButton">0</button>
         <button id="nextButton">OK</button>
       </div>
+      <div id="tableDiv" style="display: none"></div>
     </div>
 
     <script>
@@ -307,6 +336,10 @@
         return a[1].localeCompare(b[1]);
       });
 
+      const sortedArray = wordsArray.sort(function (a, b) {
+        return a[2].localeCompare(b[2]);
+      });
+
       // Fisher-Yates shuffle algorithm
       function shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -335,6 +368,7 @@
       const mode1Button = document.getElementById('mode1Button');
       const mode2Button = document.getElementById('mode2Button');
       const mode3Button = document.getElementById('mode3Button');
+      const listOfWords = document.getElementById('listOfWords');
       const addButton = document.getElementById('addButton');
       const countButton = document.getElementById('countButton');
       const nextButton = document.getElementById('nextButton');
@@ -543,6 +577,39 @@
         body.style.background = '#23003d';
         nextButton.style.background = '#822ab2';
         div2.style.background = '#822ab2';
+      }
+
+      //create a Table Object
+      let table = document.createElement('table');
+      table.setAttribute('id', 'table');
+      //table.setAttribute("style", "display: none");
+      //iterate over every array(row) within tableArr
+      for (let row of sortedArray) {
+        //Insert a new row element into the table element
+        table.insertRow();
+        //Iterate over every index(cell) in each array(row)
+        for (let cell of row) {
+          //While iterating over the index(cell)
+          //insert a cell into the table element
+          let newCell = table.rows[table.rows.length - 1].insertCell();
+          //add text to the created cell element
+          newCell.innerHTML = cell;
+        }
+      }
+      //append the compiled table to the DOM
+      let targetDiv = document.querySelector('#tableDiv');
+      targetDiv.appendChild(table);
+
+      // Show - hide table
+      listOfWords.addEventListener('click', showTable);
+
+      function showTable() {
+        let x = document.querySelector('#tableDiv');
+        if (x.style.display === 'none') {
+          x.style.display = 'block';
+        } else {
+          x.style.display = 'none';
+        }
       }
 
       /*   function hideTranslation() {

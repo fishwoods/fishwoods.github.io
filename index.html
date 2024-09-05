@@ -160,6 +160,7 @@
         align-items: center;
         font-size: 3.2rem;
         background: #1c0079;
+        border-radius: 15px;
       }
     </style>
   </head>
@@ -339,6 +340,7 @@
       const nextButton = document.getElementById('nextButton');
 
       hideThis(div2);
+      console.log(currentIndex);
 
       function mode1() {
         div1.innerText = deepCopyArray[currentIndex][0];
@@ -373,9 +375,7 @@
       }
 
       function mode3() {
-        div1.innerText = deepCopyArray[currentIndex][0].toUpperCase();
-        div2.innerText = deepCopyArray[currentIndex][1].toUpperCase();
-        div3.innerText = deepCopyArray[currentIndex][2].toUpperCase();
+        console.log('wip');
       }
 
       // ===== NEXT =====
@@ -392,7 +392,7 @@
         } else if (mode === 2) {
           mode2();
         } else {
-          mode1();
+          mode3();
         }
 
         if (mode === 2) {
@@ -412,6 +412,8 @@
         nextButton.innerHTML = deepCopyArray.length - currentIndex;
 
         currentIndex++;
+
+        console.log(currentIndex);
       });
 
       // ===== COUNT =====
@@ -457,31 +459,45 @@
         console.log(newArray); // For debugging purposes
       });
 
-      mode1Button.addEventListener('click', function () {
+      // start 1
+      function startMode1() {
         mode = 1;
         colorMode1();
         clearAll();
         updateCountButton();
-      });
+      }
 
-      mode2Button.addEventListener('click', function () {
+      // start 2
+      function startMode2() {
         mode = 2;
         colorMode2();
         clearAll();
         updateCountButton();
+      }
+
+      mode1Button.addEventListener('click', function () {
+        startMode1();
+      });
+
+      mode2Button.addEventListener('click', function () {
+        startMode2();
       });
 
       mode3Button.addEventListener('click', function () {
-        mode = 3;
+        startMode1();
       });
 
       // Show div2 when div1 or div3 is clicked
       div1.addEventListener('click', function () {
-        showThis(div2);
+        if (currentIndex !== 0) {
+          showThis(div2);
+        }
       });
 
       div3.addEventListener('click', function () {
-        showThis(div2);
+        if (currentIndex !== 0) {
+          showThis(div2);
+        }
       });
 
       // hide
@@ -533,9 +549,9 @@
         div2.style.display = 'none';
       } */
 
-      for (let e of deepCopyArray) {
+      /*    for (let e of deepCopyArray) {
         console.log(e);
-      }
+      } */
     </script>
   </body>
 </html>

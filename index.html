@@ -451,6 +451,8 @@
 
       hideThis(div2);
 
+      console.log(currentIndex);
+
       function mode1() {
         div1.innerText = deepCopyArray[currentIndex][0];
         div2.innerText = deepCopyArray[currentIndex][2];
@@ -558,6 +560,7 @@
           hideThis(div3);
           hideThis(div33);
           newArrayMode2();
+          div1.style.alignItems = 'center';
         } else {
           newArrayMode();
         }
@@ -654,29 +657,36 @@
       });
 
       // Show translation
-      div1.addEventListener('click', function () {
-        if (modeInput.value === '1' || modeInput.value === '3') {
-          showThis(div2);
-        } else if (modeInput.value === '2') {
-          showThis(div2);
-          showThis(div3);
-          showThis(div33);
 
-          div1.style.alignItems = '';
-          div3.style.alignItems = '';
+      div1.addEventListener('click', function () {
+        if (currentIndex !== 0) {
+          if (modeInput.value === '1' || modeInput.value === '3') {
+            showThis(div2);
+          } else if (modeInput.value === '2') {
+            showThis(div2);
+            showThis(div3);
+            showThis(div33);
+
+            div1.style.alignItems = '';
+            div3.style.alignItems = '';
+          }
         }
       });
 
       div3.addEventListener('click', function () {
-        if (modeInput.value === '1' || modeInput.value === '3') {
-          showThis(div2);
+        if (currentIndex !== 0) {
+          if (modeInput.value === '1' || modeInput.value === '3') {
+            showThis(div2);
+          }
         }
       });
 
       div33.addEventListener('click', function () {
-        if (modeInput.value === '2') {
-          showThis(div2);
-          showThis(div3);
+        if (currentIndex !== 0) {
+          if (modeInput.value === '2') {
+            showThis(div2);
+            showThis(div3);
+          }
         }
       });
 

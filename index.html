@@ -133,8 +133,9 @@
         height: 100%;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: flex-end;
         font-size: 3.2rem;
+        color: #ffffffe8;
       }
 
       #div3 span {
@@ -142,7 +143,7 @@
         height: 100%;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
         font-size: 3.2rem;
       }
 
@@ -161,7 +162,12 @@
         align-items: center;
         font-size: 3.2rem;
         background: #14147a;
-        border-radius: 15px;
+        border-radius: 10px;
+        margin: 20px 0;
+      }
+
+      .small-font {
+        font-size: 2.5rem;
       }
 
       #tableDiv {
@@ -202,19 +208,17 @@
         <button id="mode4Button">4</button>
         <button id="listOfWords">w</button>
       </div>
-      <div id="blur">
-        <div id="div1"><span></span></div>
-        <div id="div2"><span></span></div>
-        <div id="div3"><span></span></div>
-        <div id="bottomNav">
-          <button id="addButton">NO</button>
-          <button id="countButton">0</button>
-          <button id="nextButton">OK</button>
-        </div>
+      <div id="div1"><span></span></div>
+      <div id="div2"><span></span></div>
+      <div id="div3"><span></span></div>
+      <div id="bottomNav">
+        <button id="addButton">NO</button>
+        <button id="countButton">0</button>
+        <button id="nextButton">OK</button>
       </div>
     </div>
-    <input type="hidden" id="modeInput" value="1" />
     <div id="tableDiv" style="display: none"></div>
+    <input type="hidden" id="modeInput" value="1" />
     <script>
       let lastActivityTime = Date.now();
       let reloadTimeout;
@@ -359,6 +363,7 @@
         ['break', 'брэйк', 'разбить'],
         ['anytime', 'энитАйм', 'в любое время'],
         ['catch', 'кэч', 'поймать'],
+        ['use', 'юз', 'использую'],
       ];
 
       const wordsArrayQuestion = [
@@ -521,19 +526,17 @@
           nextButton.innerHTML = 'OK';
         }
 
+        // divs visibility
         if (modeInput.value === '1' || modeInput.value === '3') {
           showThis(div1);
           showThis(div3);
           showThis(div33);
           hideThis(div2);
-        }
-
-        if (modeInput.value === '2') {
+        } else if (modeInput.value === '2') {
           hideThis(div3);
           hideThis(div33);
-        }
-
-        if (modeInput.value === '4') {
+          div1.style.alignItems = 'center';
+        } else if (modeInput.value === '4') {
           hideThis(div33);
         }
 
@@ -583,15 +586,9 @@
         updateCountButton(); // Update the count button text
       });
 
-      //remove ALL listeners
-      function listenersClear() {
-        document.querySelectorAll('*').forEach((element) => {
-          element.removeEventListener('click', handleEvent); // Replace 'click' with the desired event type
-        });
-      }
-
       mode1Button.addEventListener('click', function () {
         modeInput.value = 1;
+        switchMode(1);
         colorMode1();
         clearAll();
         updateCountButton();
@@ -601,6 +598,7 @@
 
       mode2Button.addEventListener('click', function () {
         modeInput.value = 2;
+        switchMode(2);
         colorMode2();
         clearAll();
         updateCountButton();
@@ -610,6 +608,7 @@
 
       mode3Button.addEventListener('click', function () {
         modeInput.value = 3;
+        switchMode(3);
         colorMode3();
         clearAll();
         updateCountButton();
@@ -619,17 +618,39 @@
 
       mode4Button.addEventListener('click', function () {
         modeInput.value = 4;
+        switchMode(4);
         colorMode4();
         clearAll();
         updateCountButton();
         addButton.style.display = 'none';
         countButton.style.display = 'none';
+      });
 
-        /*    if (modeInput.value === '4') {
+      // ===== MODE ====
+      function switchMode() {
+        const mode = modeInput.value;
+
+        if (modeInput.value === '4') {
           div1.style.fontSize = '2.5rem';
-        } else if (modeInput.value !== '4') {
-          div1.style.fontSize = '3.2rem';
-        } */
+        } else {
+          div1.style.fontSize = '';
+        }
+
+        if (modeInput.value === '1' || modeInput.value === '3') {
+          div1.style.alignItems = '';
+          div3.style.alignItems = '';
+        }
+
+        if (modeInput.value === '2' || modeInput.value === '4') {
+          div1.style.alignItems = 'center';
+          div3.style.alignItems = 'center';
+        }
+
+        console.log(modeInput.value);
+      }
+
+      modeInput.addEventListener('change', function () {
+        switchMode();
       });
 
       // Show translation
@@ -640,6 +661,9 @@
           showThis(div2);
           showThis(div3);
           showThis(div33);
+
+          div1.style.alignItems = '';
+          div3.style.alignItems = '';
         }
       });
 
@@ -735,13 +759,27 @@
         }
       }
 
-      /*   function hideTranslation() {
-              div2.style.display = 'none';
-            } */
+      //remove ALL listeners
+      function listenersClear() {
+        document.querySelectorAll('*').forEach((element) => {
+          element.removeEventListener('click', handleEvent); // Replace 'click' with the desired event type
+        });
+      }
 
-      /*    for (let e of deepCopyArray) {
-              console.log(e);
-            } */
+      // Check the mode every 100 milliseconds
+      /*   function checkMode() {
+        const mode = modeInput.value;
+        console.log('Current mode:', mode);
+        // Do something with the mode value
+
+        // font size
+        if (modeInput.value === '4') {
+          div1.style.fontSize = '2.5rem';
+        } else {
+          div1.style.fontSize = '';
+        }
+      }
+      setInterval(checkMode, 100); */
     </script>
   </body>
 </html>

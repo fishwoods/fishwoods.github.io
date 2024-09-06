@@ -42,13 +42,10 @@
         opacity: 0.5;
       }
 
-      #blur {
-        width: 340px;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+      #elapsedTime {
+        position: absolute;
+        top: 0;
+        font-size: 0.8rem;
       }
 
       #wrapper {
@@ -200,6 +197,7 @@
   </head>
 
   <body>
+    <div id="elapsedTime"></div>
     <div id="wrapper">
       <div id="topNav">
         <button id="mode1Button">1</button>
@@ -237,13 +235,39 @@
         const currentTime = Date.now();
         const elapsedTime = currentTime - lastActivityTime;
 
-        if (elapsedTime >= 3600000) {
-          // 1 hour in milliseconds
+        if (elapsedTime >= 1800000) {
+          // 30min 1800000
           reloadTimeout = setTimeout(() => {
             window.location.reload();
           }, 1000); // Delay the reload for 1 second
         }
-      }, 60000); // Check every minute
+      }, 100); // Check every minute
+
+      // o
+      const lastReloadTime = localStorage.getItem('lastReloadTime');
+      const elapsedTimeElement = document.getElementById('elapsedTime');
+
+      if (lastReloadTime) {
+        const elapsedSeconds = Math.floor(
+          (Date.now() - parseInt(lastReloadTime)) / 1000
+        );
+        elapsedTimeElement.innerHTML = `${elapsedSeconds} sec`;
+      } else {
+        elapsedTimeElement.innerHTML = 'Page has not been reloaded yet';
+      }
+
+      // Update the elapsed time every second
+      setInterval(() => {
+        const elapsedSeconds = Math.floor(
+          (Date.now() - parseInt(lastReloadTime)) / 1000
+        );
+        elapsedTimeElement.innerHTML = `${elapsedSeconds} sec`;
+      }, 1000);
+
+      // Store the current time when the page is reloaded
+      window.addEventListener('load', () => {
+        localStorage.setItem('lastReloadTime', Date.now());
+      });
 
       // array
       const wordsArray = [

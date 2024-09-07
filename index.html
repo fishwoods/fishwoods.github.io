@@ -219,36 +219,6 @@
     <div id="tableDiv" style="display: none"></div>
     <input type="hidden" id="modeInput" value="1" />
     <script>
-      /*  document.addEventListener('touchstart', () => {
-        lastActivityTime = Date.now();
-      });
-
-      document.addEventListener('click', () => {
-        lastActivityTime = Date.now();
-      }); */
-
-      let lastReloadTime = Date.now();
-      const elapsedTimeElement = document.getElementById('elapsedTime'); // Assuming you have an element with this ID
-
-      setInterval(() => {
-        const currentTime = Date.now();
-        const elapsedTime = currentTime - lastReloadTime; // Calculate elapsed time since last reload
-
-        if (elapsedTime >= 1200000) {
-          // 20 minutes
-          window.location.reload(true);
-        } else {
-          // Update elapsed time display
-          const elapsedSeconds = Math.floor(elapsedTime / 1000);
-          elapsedTimeElement.innerHTML = `${elapsedSeconds} sec`;
-        }
-      }, 100); // Check every 100 milliseconds
-
-      // Store the current time when the page is reloaded
-      window.addEventListener('load', () => {
-        lastReloadTime = Date.now();
-      });
-
       // array
       const wordsArray = [
         ['be', 'би', 'быть'],

@@ -221,156 +221,177 @@
     <script>
       // array
       const wordsArray = [
-        ['be', 'би', 'быть'],
-        ['bring', 'бринг', 'принести'],
-        ['buy', 'бай', 'купить'],
-        ['call', 'кол', 'звонить'],
-        ['cost', 'кост', 'стоить'],
-        ['do', 'ду', 'делать'],
-        ['dream', 'дрим', 'мечтать'],
-        ['drink', 'дринк', 'пить'],
-        ['drive', 'драйв', 'водить'],
-        ['eat', 'ит', 'кушать'],
-        ['feel', 'фил', 'чувствовать'],
-        ['forget', 'фогЭт', 'забыть'],
-        ['get', 'гэт', 'получить'],
-        ['give', 'гив', 'дать'],
-        ['have', 'хэв', 'иметь'],
-        ['know', 'нОу', 'знать'],
-        ['learn', 'лёрн', 'учиться'],
-        ['make', 'мэйк', 'сделать'],
-        ['meet', 'мит', 'встретить'],
-        ['pay', 'пэй', 'платить'],
-        ['play', 'плэй', 'играть'],
-        ['put', 'пут', 'класть'],
-        ['read', 'рид', 'читать'],
-        ['see', 'си', 'видеть'],
-        ['sell', 'сэл', 'продать'],
-        ['send', 'сэнд', 'слать'],
-        ['sleep', 'слип', 'спать'],
-        ['speak', 'спик', 'говорить'],
-        ['take', 'тэйк', 'брать'],
-        ['teach', 'тич', 'учить'],
-        ['tell', 'тэл', 'сказать'],
-        ['think', 'синк', 'думать'],
-        ['try', 'трай', 'стараться'],
-        ['write', 'райт', 'писать'],
-        ['wait', 'вэйт', 'ждать'],
-        ['become', 'бикАм', 'стать'],
-        ['begin', 'бигИн', 'начать'],
-        ['choose', 'чуз', 'выбрать'],
-        ['come', 'кам', 'прийти'],
-        ['cut', 'кат', 'резать'],
-        ['find', 'файнд', 'найти'],
-        ['dryer', 'дрАер', 'сушилка'],
-        ['fly', 'флай', 'лететь'],
-        ['hear', 'хИа', 'слышать'],
-        ['hold', 'холд', 'держать'],
-        ['later', 'лЭйтэр', 'позже'],
-        ['leave', 'лив', 'оставить'],
-        ['lie', 'лай', 'лежать'],
-        ['run', 'ран', 'бежать'],
-        ['show', 'шОу', 'показать'],
-        ['sit', 'сит', 'сидеть'],
-        ['swim', 'свим', 'плыть'],
-        ['wake up', 'вЭйк ап', 'проснуться'],
-        ['win', 'вин', 'выиграть'],
-        ['new', 'нью', 'новый'],
-        ['now', 'нАу', 'сейчас'],
-        ['high', 'хай', 'высокий'],
-        ['old', 'олд', 'старый'],
-        ['long', 'лонг', 'длинный'],
-        ['little', 'литл', 'маленький'],
-        ['bad', 'бэд', 'плохой'],
-        ['best', 'бэст', 'лучший'],
-        ['right', 'райт', 'правильно'],
-        ['only', 'Онли', 'только'],
-        ['low', 'лОу', 'низкий'],
-        ['early', 'Ёрли', 'рано'],
-        ['late', 'лЭйт', 'поздно'],
-        ['hard', 'хард', 'жесткий'],
-        ['strong', 'стронг', 'сильный'],
-        ['free', 'фри', 'свободный'],
-        ['full', 'фул', 'полный'],
-        ['recently', 'рИсэнтли', 'недавно'],
-        ['open', 'Оупн', 'открыть'],
-        ['wrong', 'ронг', 'неправильно'],
-        ['similar', 'сИмилар', 'похожий'],
-        ['hot', 'хот', 'горячий'],
-        ['happy', 'хэпи', 'счастлив'],
-        ['ready', 'рЭди', 'готовый'],
-        ['dark', 'дарк', 'темный'],
-        ['cold', 'колд', 'холодный'],
-        ['main', 'мэйн', 'главный'],
-        ['huge', 'хьюдж', 'огромный'],
-        ['everything', 'Эврисинг', 'всё'],
-        ['nothing', 'нАсинг', 'ничего'],
-        ['every', 'Эври', 'каждый'],
-        ['thing', 'синг', 'вещь'],
-        ['all', 'ол', 'все'],
-        ['happen', 'хЭпн', 'случается'],
-        ['thread', 'трэд', 'нить'],
-        ['item', 'Айтэм', 'предмет'],
-        ['slow', 'слОу', 'медленный'],
-        ['fast', 'фаст', 'быстро'],
-        ['sure', 'шУа', 'конечно'],
-        ['already', 'олрЭди', 'уже'],
-        ['yet', 'йЕт', 'еще'],
-        ['ask', 'аск', 'спросить'],
-        ['spend', 'спэнд', 'тратить'],
-        ['change', 'чейндж', 'менять'],
-        ['move', 'мув', 'двигать'],
-        ['enjoy', 'энджОй', 'наслаждаться'],
-        ['sometimes', 'самтАймс', 'иногда'],
-        ['must', 'маст', 'должен'],
-        ['want', 'вОнт', 'хотеть'],
-        ['need', 'нид', 'нужно'],
-        ['week', 'вик', 'неделя'],
-        ['month', 'манс', 'месяц'],
-        ['hour', 'Ауэр', 'час'],
-        ['price', 'прайс', 'цена'],
-        ['agree', 'эгрИ', 'согласиться'],
-        ['look for', 'лук фор', 'искать'],
-        ['funny', 'фАни', 'забавный'],
-        ['fine', 'файн', 'хорошо'],
-        ['feed', 'фид', 'кормить'],
-        ['break', 'брэйк', 'разбить'],
-        ['anytime', 'энитАйм', 'в любое время'],
-        ['catch', 'кэч', 'поймать'],
-        ['use', 'юз', 'использую'],
+        ["be", "би", "быть"],
+        ["bring", "бринг", "принести"],
+        ["buy", "бай", "купить"],
+        ["call", "кол", "звонить"],
+        ["cost", "кост", "стоить"],
+        ["do", "ду", "делать"],
+        ["dream", "дрим", "мечтать"],
+        ["drink", "дринк", "пить"],
+        ["drive", "драйв", "водить"],
+        ["eat", "ит", "кушать"],
+        ["feel", "фил", "чувствовать"],
+        ["forget", "фогЭт", "забыть"],
+        ["get", "гэт", "получить"],
+        ["give", "гив", "дать"],
+        ["have", "хэв", "иметь"],
+        ["know", "нОу", "знать"],
+        ["learn", "лёрн", "учиться"],
+        ["make", "мэйк", "сделать"],
+        ["meet", "мит", "встретить"],
+        ["pay", "пэй", "платить"],
+        ["play", "плэй", "играть"],
+        ["put", "пут", "класть"],
+        ["read", "рид", "читать"],
+        ["see", "си", "видеть"],
+        ["sell", "сэл", "продать"],
+        ["send", "сэнд", "слать"],
+        ["sleep", "слип", "спать"],
+        ["speak", "спик", "говорить"],
+        ["take", "тэйк", "брать"],
+        ["teach", "тич", "учить"],
+        ["tell", "тэл", "сказать"],
+        ["think", "синк", "думать"],
+        ["try", "трай", "стараться"],
+        ["write", "райт", "писать"],
+        ["wait", "вэйт", "ждать"],
+        ["become", "бикАм", "стать"],
+        ["begin", "бигИн", "начать"],
+        ["choose", "чуз", "выбрать"],
+        ["come", "кам", "прийти"],
+        ["cut", "кат", "резать"],
+        ["find", "файнд", "найти"],
+        ["dryer", "дрАер", "сушилка"],
+        ["fly", "флай", "лететь"],
+        ["hear", "хИа", "слышать"],
+        ["hold", "холд", "держать"],
+        ["later", "лЭйтэр", "позже"],
+        ["leave", "лив", "оставить"],
+        ["lie", "лай", "лежать"],
+        ["run", "ран", "бежать"],
+        ["show", "шОу", "показать"],
+        ["sit", "сит", "сидеть"],
+        ["swim", "свим", "плыть"],
+        ["wake up", "вЭйк ап", "проснуться"],
+        ["win", "вин", "выиграть"],
+        ["new", "нью", "новый"],
+        ["now", "нАу", "сейчас"],
+        ["high", "хай", "высокий"],
+        ["old", "олд", "старый"],
+        ["long", "лонг", "длинный"],
+        ["little", "литл", "маленький"],
+        ["bad", "бэд", "плохой"],
+        ["best", "бэст", "лучший"],
+        ["right", "райт", "правильно"],
+        ["only", "Онли", "только"],
+        ["low", "лОу", "низкий"],
+        ["early", "Ёрли", "рано"],
+        ["late", "лЭйт", "поздно"],
+        ["hard", "хард", "жесткий"],
+        ["strong", "стронг", "сильный"],
+        ["free", "фри", "свободный"],
+        ["full", "фул", "полный"],
+        ["recently", "рИсэнтли", "недавно"],
+        ["open", "Оупн", "открыть"],
+        ["wrong", "ронг", "неправильно"],
+        ["similar", "сИмилар", "похожий"],
+        ["hot", "хот", "горячий"],
+        ["happy", "хэпи", "счастлив"],
+        ["ready", "рЭди", "готовый"],
+        ["dark", "дарк", "темный"],
+        ["cold", "колд", "холодный"],
+        ["main", "мэйн", "главный"],
+        ["huge", "хьюдж", "огромный"],
+        ["everything", "Эврисинг", "всё"],
+        ["nothing", "нАсинг", "ничего"],
+        ["every", "Эври", "каждый"],
+        ["thing", "синг", "вещь"],
+        ["all", "ол", "все"],
+        ["happen", "хЭпн", "случается"],
+        ["thread", "трэд", "нить"],
+        ["item", "Айтэм", "предмет"],
+        ["slow", "слОу", "медленный"],
+        ["fast", "фаст", "быстро"],
+        ["sure", "шУа", "конечно"],
+        ["already", "олрЭди", "уже"],
+        ["yet", "йЕт", "еще"],
+        ["ask", "аск", "спросить"],
+        ["spend", "спэнд", "тратить"],
+        ["change", "чейндж", "менять"],
+        ["move", "мув", "двигать"],
+        ["enjoy", "энджОй", "наслаждаться"],
+        ["sometimes", "самтАймс", "иногда"],
+        ["must", "маст", "должен"],
+        ["want", "вОнт", "хотеть"],
+        ["need", "нид", "нужно"],
+        ["week", "вик", "неделя"],
+        ["month", "манс", "месяц"],
+        ["hour", "Ауэр", "час"],
+        ["price", "прайс", "цена"],
+        ["agree", "эгрИ", "согласиться"],
+        ["look for", "лук фор", "искать"],
+        ["funny", "фАни", "забавный"],
+        ["fine", "файн", "хорошо"],
+        ["feed", "фид", "кормить"],
+        ["break", "брэйк", "разбить"],
+        ["anytime", "энитАйм", "в любое время"],
+        ["catch", "кэч", "поймать"],
+        ["use", "юз", "использую"],
+        ["never", "нЭвэр", "никогда"],
       ];
 
       const wordsArrayQuestion = [
-        ['how many', 'хАу мЭни', 'сколько (исч)'],
-        ['how much', 'хАу мач', 'сколько'],
-        ['what for', 'ват фор', 'зачем'],
-        ['when', 'вэн', 'когда'],
-        ['where', 'вЭа', 'где, куда'],
-        ['who', 'ху', 'кто'],
-        ['why', 'вай', 'почему'],
-        ['what', 'ват', 'что'],
-        ['which', 'уИч', 'который'],
-        ['how', 'хАу', 'как'],
-        ['whose', 'хуз', 'чей'],
+        ["how many", "хАу мЭни", "сколько (исч)"],
+        ["how much", "хАу мач", "сколько"],
+        ["what for", "ват фор", "зачем"],
+        ["when", "вэн", "когда"],
+        ["where", "вЭа", "где, куда"],
+        ["who", "ху", "кто"],
+        ["why", "вай", "почему"],
+        ["what", "ват", "что"],
+        ["which", "уИч", "который"],
+        ["how", "хАу", "как"],
+        ["whose", "хуз", "чей"],
       ];
 
       const wordsArrayLong = [
-        ['Я ищу автобусную остановку. Скажите пожалуйста где она'],
-        ['Можно посмотреть ту коричневую сумку пожалуйста?'],
-        ['Сколько стоит этот пиджак?'],
-        ['Отлично, наконец-то пятница. Время идти домой'],
-        ['Сколько остановок до 11-й авеню?'],
-        ['Скажите мне пожалуйста когда мы прибываем в Монреаль?'],
-        ['Мне нужен билет на сегодня, где я могу купить его?'],
-        ['Извини, я тебя не расслышал. Скажи снова пожалуйста'],
-        ['Могу я спросить у вас что-то? Как называется это дерево?'],
-        ['Спасибо за информацию'],
-        ['Я учу английский каждый день, но не на уикенд'],
-        ['Я согласна. Первый сезон этого тв шоу был лучший'],
-        ['Я недавно поменяла нитки от белой к зеленой. Все работает хорошо'],
-        ['Я могу отнести коробку в комнату завтра или сейчас'],
-        ['Клиент ждет тебя возле кухни'],
-        ['Я оставлю это здесь, ты можешь брать в любое время'],
+        ["Я ищу автобусную остановку. Скажите пожалуйста где она"],
+        ["Можно посмотреть ту коричневую сумку пожалуйста?"],
+        ["Сколько стоит этот пиджак?"],
+        ["Отлично, наконец-то пятница. Время идти домой"],
+        ["Сколько остановок до 11-й авеню?"],
+        ["Скажите мне пожалуйста когда мы прибываем в Монреаль?"],
+        ["Мне нужен билет на сегодня, где я могу купить его?"],
+        ["Извини, я тебя не расслышал. Скажи снова пожалуйста"],
+        ["Могу я спросить у вас что-то? Как называется это дерево?"],
+        ["Спасибо за информацию"],
+        ["Я учу английский каждый день, но не на уикенд"],
+        ["Я согласна. Первый сезон этого тв шоу был лучший"],
+        ["Я недавно поменяла нитки от белой к зеленой. Все работает хорошо"],
+        ["Я могу отнести коробку в комнату завтра или сейчас"],
+        ["Клиент ждет тебя возле кухни"],
+        ["Я оставлю это здесь, ты можешь брать в любое время"],
+      ];
+
+      const wordsArraySmallTalk = [
+        ["You look great", "Ты выглядишь хорошо"],
+        ["What a coincidence! [коИнсидэнс]", "Какое совпадение!"],
+        ["That's great!", "Отлично!"],
+        ["Good for you!", "Ты молодец!"],
+        ["You won't believe this!", "Ты не поверишь!"],
+        ["That's terrible! [тЭрибл]", "Это ужасно!"],
+        ["You too", "Тебе тоже"],
+        ["Me too", "Я тоже"],
+        ["Have fun!", "Веселись! Получай удовольствие!"],
+        ["Have a good day", "Хорошего дня"],
+        ["Have a great weekend", "Хорошего уикенда"],
+        ["Have a nice evening", "Хорошего вечера"],
+        ["Sounds good!", "Звучит хорошо!"],
+        ["You are welcome", "Пожалуйста"],
+        ["Likewise [лАйквайз]", "Взаимно"],
+        ["Same for me", "У меня тоже самое"],
+        ["Never mind [нЭвэмайнд]", "Неважно"],
       ];
 
       // Create a deep copy of the wordsArray
@@ -397,6 +418,7 @@
       shuffle(deepCopyArray);
       shuffle(wordsArrayQuestion);
       shuffle(wordsArrayLong);
+      shuffle(wordsArraySmallTalk);
 
       let currentIndex = 0;
       let newIndex = 0;
@@ -404,24 +426,24 @@
       let newArray = [];
 
       // Store references to the elements in variables
-      const htmlQ = document.querySelector('html');
-      const body = document.querySelector('body');
-      const wrapper = document.getElementById('wrapper');
-      const div1 = document.querySelector('#div1 span');
-      const div2 = document.querySelector('#div2 span');
-      const div3 = document.querySelector('#div3 span');
-      const div33 = document.querySelector('#div3');
-      const topNav = document.getElementById('topNav');
-      const mode1Button = document.getElementById('mode1Button');
-      const mode2Button = document.getElementById('mode2Button');
-      const mode3Button = document.getElementById('mode3Button');
-      const mode4Button = document.getElementById('mode4Button');
-      const listOfWords = document.getElementById('listOfWords');
-      const bottomNav = document.getElementById('bottomNav');
-      const addButton = document.getElementById('addButton');
-      const countButton = document.getElementById('countButton');
-      const nextButton = document.getElementById('nextButton');
-      const modeInput = document.getElementById('modeInput');
+      const htmlQ = document.querySelector("html");
+      const body = document.querySelector("body");
+      const wrapper = document.getElementById("wrapper");
+      const div1 = document.querySelector("#div1 span");
+      const div2 = document.querySelector("#div2 span");
+      const div3 = document.querySelector("#div3 span");
+      const div33 = document.querySelector("#div3");
+      const topNav = document.getElementById("topNav");
+      const mode1Button = document.getElementById("mode1Button");
+      const mode2Button = document.getElementById("mode2Button");
+      const mode3Button = document.getElementById("mode3Button");
+      const mode4Button = document.getElementById("mode4Button");
+      const listOfWords = document.getElementById("listOfWords");
+      const bottomNav = document.getElementById("bottomNav");
+      const addButton = document.getElementById("addButton");
+      const countButton = document.getElementById("countButton");
+      const nextButton = document.getElementById("nextButton");
+      const modeInput = document.getElementById("modeInput");
 
       hideThis(div2);
 
@@ -435,7 +457,7 @@
 
       function newArrayMode() {
         if (newArray.length === 0) {
-          console.log('no words yet');
+          console.log("no words yet");
         } else {
           div1.innerText = newArray[newIndex][0];
           div2.innerText = newArray[newIndex][2];
@@ -445,7 +467,7 @@
 
       function newArrayMode2() {
         if (newArray.length === 0) {
-          console.log('no words yet');
+          console.log("no words yet");
         } else {
           div1.innerText = newArray[newIndex][2];
           div2.innerText = newArray[newIndex][0];
@@ -470,6 +492,15 @@
       }
 
       function mode4() {
+        if (currentIndex >= wordsArraySmallTalk.length) {
+          currentIndex = 0;
+        }
+
+        div1.innerText = wordsArraySmallTalk[currentIndex][0];
+        div3.innerText = wordsArraySmallTalk[currentIndex][1];
+      }
+
+      function mode5() {
         if (currentIndex >= wordsArrayLong.length) {
           currentIndex = 0;
         }
@@ -478,7 +509,7 @@
       }
 
       // ===== NEXT =====
-      nextButton.addEventListener('click', function () {
+      nextButton.addEventListener("click", function () {
         //
         hideThis(div2);
 
@@ -488,31 +519,31 @@
 
         console.log(modeInput.value);
 
-        if (modeInput.value === '1') {
+        if (modeInput.value === "1") {
           mode1();
           nextButton.innerHTML = deepCopyArray.length - currentIndex;
-        } else if (modeInput.value === '2') {
+        } else if (modeInput.value === "2") {
           mode2();
           nextButton.innerHTML = deepCopyArray.length - currentIndex;
-        } else if (modeInput.value === '3') {
+        } else if (modeInput.value === "3") {
           mode3();
           nextButton.innerHTML = wordsArrayQuestion.length - currentIndex;
-        } else if (modeInput.value === '4') {
+        } else if (modeInput.value === "4") {
           mode4();
-          nextButton.innerHTML = 'OK';
+          nextButton.innerHTML = wordsArraySmallTalk.length - currentIndex;
         }
 
         // divs visibility
-        if (modeInput.value === '1' || modeInput.value === '3') {
+        if (modeInput.value === "1" || modeInput.value === "3") {
           showThis(div1);
           showThis(div3);
           showThis(div33);
           hideThis(div2);
-        } else if (modeInput.value === '2') {
+        } else if (modeInput.value === "2") {
           hideThis(div3);
           hideThis(div33);
-          div1.style.alignItems = 'center';
-        } else if (modeInput.value === '4') {
+          div1.style.alignItems = "center";
+        } else if (modeInput.value === "4") {
           hideThis(div33);
         }
 
@@ -520,7 +551,7 @@
       });
 
       // ===== COUNT =====
-      countButton.addEventListener('click', function () {
+      countButton.addEventListener("click", function () {
         //
         hideThis(div2);
 
@@ -528,13 +559,13 @@
           newIndex = 0; // Reset to cycle through the words again
         }
 
-        if (modeInput.value === '1') {
+        if (modeInput.value === "1") {
           newArrayMode();
-        } else if (modeInput.value === '2') {
+        } else if (modeInput.value === "2") {
           hideThis(div3);
           hideThis(div33);
           newArrayMode2();
-          div1.style.alignItems = 'center';
+          div1.style.alignItems = "center";
         } else {
           newArrayMode();
         }
@@ -543,7 +574,7 @@
       });
 
       // ===== ADD =====
-      addButton.addEventListener('click', function () {
+      addButton.addEventListener("click", function () {
         //
         newIndex = 0;
 
@@ -563,101 +594,104 @@
         updateCountButton(); // Update the count button text
       });
 
-      mode1Button.addEventListener('click', function () {
+      mode1Button.addEventListener("click", function () {
         modeInput.value = 1;
         switchMode(1);
         colorMode1();
         clearAll();
         updateCountButton();
-        addButton.style.display = 'flex';
-        countButton.style.display = 'flex';
+        addButton.style.display = "flex";
+        countButton.style.display = "flex";
       });
 
-      mode2Button.addEventListener('click', function () {
+      mode2Button.addEventListener("click", function () {
         modeInput.value = 2;
         switchMode(2);
         colorMode2();
         clearAll();
         updateCountButton();
-        addButton.style.display = 'flex';
-        countButton.style.display = 'flex';
+        addButton.style.display = "flex";
+        countButton.style.display = "flex";
       });
 
-      mode3Button.addEventListener('click', function () {
+      mode3Button.addEventListener("click", function () {
         modeInput.value = 3;
         switchMode(3);
         colorMode3();
         clearAll();
         updateCountButton();
-        addButton.style.display = 'none';
-        countButton.style.display = 'none';
+        addButton.style.display = "none";
+        countButton.style.display = "none";
       });
 
-      mode4Button.addEventListener('click', function () {
+      mode4Button.addEventListener("click", function () {
         modeInput.value = 4;
         switchMode(4);
         colorMode4();
         clearAll();
         updateCountButton();
-        addButton.style.display = 'none';
-        countButton.style.display = 'none';
+        addButton.style.display = "none";
+        countButton.style.display = "none";
       });
 
       // ===== MODE ====
       function switchMode() {
         const mode = modeInput.value;
 
-        if (modeInput.value === '4') {
-          div1.style.fontSize = '2.5rem';
+        if (modeInput.value === "4") {
+          div1.style.fontSize = "2.5rem";
+          div3.style.fontSize = "2.5rem";
         } else {
-          div1.style.fontSize = '';
+          div1.style.fontSize = "";
+          div3.style.fontSize = "";
         }
 
-        if (modeInput.value === '1' || modeInput.value === '3') {
-          div1.style.alignItems = '';
-          div3.style.alignItems = '';
+        if (modeInput.value === "1" || modeInput.value === "3") {
+          div1.style.alignItems = "";
+          div3.style.alignItems = "";
         }
 
-        if (modeInput.value === '2' || modeInput.value === '4') {
-          div1.style.alignItems = 'center';
-          div3.style.alignItems = 'center';
+        if (modeInput.value === "2" || modeInput.value === "4") {
+          div1.style.alignItems = "center";
+          div3.style.alignItems = "center";
         }
 
         console.log(modeInput.value);
       }
 
-      modeInput.addEventListener('change', function () {
+      modeInput.addEventListener("change", function () {
         switchMode();
       });
 
       // Show translation
-
-      div1.addEventListener('click', function () {
+      div1.addEventListener("click", function () {
         if (currentIndex !== 0) {
-          if (modeInput.value === '1' || modeInput.value === '3') {
+          if (modeInput.value === "1" || modeInput.value === "3") {
             showThis(div2);
-          } else if (modeInput.value === '2') {
+          } else if (modeInput.value === "2") {
             showThis(div2);
             showThis(div3);
             showThis(div33);
-
-            div1.style.alignItems = '';
-            div3.style.alignItems = '';
+            div1.style.alignItems = "";
+            div3.style.alignItems = "";
+          } else if (modeInput.value === "4") {
+            showThis(div3);
+            showThis(div33);
           }
         }
       });
 
-      div3.addEventListener('click', function () {
+      div3.addEventListener("click", function () {
         if (currentIndex !== 0) {
-          if (modeInput.value === '1' || modeInput.value === '3') {
+          if (modeInput.value === "1" || modeInput.value === "3") {
             showThis(div2);
           }
         }
       });
 
-      div33.addEventListener('click', function () {
+      div33.addEventListener("click", function () {
         if (currentIndex !== 0) {
-          if (modeInput.value === '2') {
+          if (modeInput.value === "2") {
             showThis(div2);
             showThis(div3);
           }
@@ -666,12 +700,12 @@
 
       // hide
       function hideThis(me) {
-        me.style.display = 'none';
+        me.style.display = "none";
       }
 
       // show
       function showThis(me) {
-        me.style.display = 'flex';
+        me.style.display = "flex";
       }
 
       function updateCountButton() {
@@ -683,36 +717,36 @@
         currentIndex = 0;
         newIndex = 0;
         newArray.length = 0;
-        div1.innerHTML = '';
-        div2.innerHTML = '';
-        div3.innerHTML = '';
-        nextButton.innerHTML = 'OK';
+        div1.innerHTML = "";
+        div2.innerHTML = "";
+        div3.innerHTML = "";
+        nextButton.innerHTML = "OK";
         hideThis(div2);
       }
 
       // color scheme mode 1
       function colorMode1() {
-        htmlQ.style.filter = '';
+        htmlQ.style.filter = "";
       }
 
       // color scheme mode 2
       function colorMode2() {
-        htmlQ.style.filter = 'hue-rotate(40deg)';
+        htmlQ.style.filter = "hue-rotate(40deg)";
       }
 
       // color scheme mode 3
       function colorMode3() {
-        htmlQ.style.filter = 'hue-rotate(250deg)';
+        htmlQ.style.filter = "hue-rotate(250deg)";
       }
 
       // color scheme mode 4
       function colorMode4() {
-        htmlQ.style.filter = 'hue-rotate(140deg)';
+        htmlQ.style.filter = "hue-rotate(60deg)";
       }
 
       //create a Table Object
-      let table = document.createElement('table');
-      table.setAttribute('id', 'table');
+      let table = document.createElement("table");
+      table.setAttribute("id", "table");
       //table.setAttribute("style", "display: none");
       //iterate over every array(row) within tableArr
       for (let row of sortedArray) {
@@ -728,42 +762,42 @@
         }
       }
       //append the compiled table to the DOM
-      let targetDiv = document.querySelector('#tableDiv');
+      let targetDiv = document.querySelector("#tableDiv");
       targetDiv.appendChild(table);
 
       // Show - hide table
-      listOfWords.addEventListener('click', showTable);
+      listOfWords.addEventListener("click", showTable);
 
       function showTable() {
-        let x = document.querySelector('#tableDiv');
-        if (x.style.display === 'none') {
-          x.style.display = 'block';
+        let x = document.querySelector("#tableDiv");
+        if (x.style.display === "none") {
+          x.style.display = "block";
         } else {
-          x.style.display = 'none';
+          x.style.display = "none";
         }
       }
 
       //remove ALL listeners
       function listenersClear() {
-        document.querySelectorAll('*').forEach((element) => {
-          element.removeEventListener('click', handleEvent); // Replace 'click' with the desired event type
+        document.querySelectorAll("*").forEach((element) => {
+          element.removeEventListener("click", handleEvent); // Replace 'click' with the desired event type
         });
       }
 
       // Check the mode every 100 milliseconds
       /*   function checkMode() {
-        const mode = modeInput.value;
-        console.log('Current mode:', mode);
-        // Do something with the mode value
+              const mode = modeInput.value;
+              console.log('Current mode:', mode);
+              // Do something with the mode value
 
-        // font size
-        if (modeInput.value === '4') {
-          div1.style.fontSize = '2.5rem';
-        } else {
-          div1.style.fontSize = '';
-        }
-      }
-      setInterval(checkMode, 100); */
+              // font size
+              if (modeInput.value === '4') {
+                div1.style.fontSize = '2.5rem';
+              } else {
+                div1.style.fontSize = '';
+              }
+            }
+            setInterval(checkMode, 100); */
     </script>
   </body>
 </html>

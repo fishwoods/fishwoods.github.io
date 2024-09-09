@@ -451,7 +451,6 @@
       let newArray = [];
       let currentIndex = 0;
       let newIndex = 0;
-      let mode = 1;
 
       // Store references to the elements in variables
       const htmlQ = document.querySelector("html");
@@ -474,6 +473,7 @@
       const modeInput = document.getElementById("modeInput");
 
       clearAll();
+      modeInput.value = 1;
 
       function mode1() {
         div1.innerText = deepCopyArray[currentIndex][2];

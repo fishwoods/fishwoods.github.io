@@ -118,50 +118,58 @@
         background: #14147a;
       }
 
-      #div1,
-      #div3 {
+      #div1 {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        flex: 1;
+      }
+
+      #div2 {
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
+      }
+
+      #div3 {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
         flex: 1;
       }
 
       #div1 span {
         width: 100%;
-        height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 3.2rem;
-        color: #ffffffe8;
-      }
-
-      #div3 span {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 3.2rem;
-      }
-
-      #div2 {
-        width: 100vw;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        border-radius: 10px;
+        padding: 15px;
+        background: #14147a;
       }
 
       #div2 span {
         width: 100%;
-        height: 100px;
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 3.2rem;
-        background: #14147a;
-        margin: 20px 0;
+        padding: 30px 0;
+      }
+
+      #div3 span {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3.2rem;
+        border-radius: 10px;
+        padding: 15px;
+        color: #8fa2ff;
       }
 
       .small-font {
@@ -440,10 +448,10 @@
       shuffle(wordsArrayLong);
       shuffle(wordsArraySmallTalk);
 
+      let newArray = [];
       let currentIndex = 0;
       let newIndex = 0;
       let mode = 1;
-      let newArray = [];
 
       // Store references to the elements in variables
       const htmlQ = document.querySelector("html");
@@ -465,13 +473,11 @@
       const nextButton = document.getElementById("nextButton");
       const modeInput = document.getElementById("modeInput");
 
-      hideThis(div2);
-
-      console.log(currentIndex);
+      clearAll();
 
       function mode1() {
-        div1.innerText = deepCopyArray[currentIndex][0];
-        div2.innerText = deepCopyArray[currentIndex][2];
+        div1.innerText = deepCopyArray[currentIndex][2];
+        div2.innerText = deepCopyArray[currentIndex][0];
         div3.innerText = deepCopyArray[currentIndex][1];
       }
 
@@ -496,8 +502,8 @@
       }
 
       function mode2() {
-        div1.innerText = deepCopyArray[currentIndex][2];
-        div2.innerText = deepCopyArray[currentIndex][0];
+        div1.innerText = deepCopyArray[currentIndex][0];
+        div2.innerText = deepCopyArray[currentIndex][2];
         div3.innerText = deepCopyArray[currentIndex][1];
       }
 
@@ -506,8 +512,8 @@
           currentIndex = 0;
         }
 
-        div1.innerText = wordsArrayQuestion[currentIndex][0];
-        div2.innerText = wordsArrayQuestion[currentIndex][2];
+        div1.innerText = wordsArrayQuestion[currentIndex][2];
+        div2.innerText = wordsArrayQuestion[currentIndex][0];
         div3.innerText = wordsArrayQuestion[currentIndex][1];
       }
 
@@ -516,7 +522,7 @@
           currentIndex = 0;
         }
 
-        div1.innerText = wordsArraySmallTalk[currentIndex][0];
+        div2.innerText = wordsArraySmallTalk[currentIndex][0];
         div3.innerText = wordsArraySmallTalk[currentIndex][1];
       }
 
@@ -531,7 +537,6 @@
       // ===== NEXT =====
       nextButton.addEventListener("click", function () {
         //
-        hideThis(div2);
 
         if (currentIndex >= deepCopyArray.length) {
           currentIndex = 0; // Reset to cycle through the words again
@@ -555,16 +560,16 @@
 
         // divs visibility
         if (modeInput.value === "1" || modeInput.value === "3") {
-          showThis(div1);
+          hideThis(div1);
+          showThis(div2);
           showThis(div3);
-          showThis(div33);
-          hideThis(div2);
         } else if (modeInput.value === "2") {
+          hideThis(div1);
+          showThis(div2);
           hideThis(div3);
-          hideThis(div33);
-          div1.style.alignItems = "center";
         } else if (modeInput.value === "4") {
-          hideThis(div33);
+          showThis(div2);
+          hideThis(div3);
         }
 
         currentIndex++;
@@ -660,9 +665,11 @@
 
         if (modeInput.value === "4") {
           div1.style.fontSize = "2.5rem";
+          div2.style.fontSize = "2.5rem";
           div3.style.fontSize = "2.5rem";
         } else {
           div1.style.fontSize = "";
+          div2.style.fontSize = "";
           div3.style.fontSize = "";
         }
 
@@ -684,19 +691,16 @@
       });
 
       // Show translation
-      div1.addEventListener("click", function () {
+      div2.addEventListener("click", function () {
         if (currentIndex !== 0) {
-          if (modeInput.value === "1" || modeInput.value === "3") {
-            showThis(div2);
+          if (modeInput.value === "4") {
+            showThis(div3);
           } else if (modeInput.value === "2") {
-            showThis(div2);
+            showThis(div1);
             showThis(div3);
-            showThis(div33);
-            div1.style.alignItems = "";
-            div3.style.alignItems = "";
-          } else if (modeInput.value === "4") {
+          } else if (modeInput.value === "1" || modeInput.value === "3") {
+            showThis(div1);
             showThis(div3);
-            showThis(div33);
           }
         }
       });
@@ -704,28 +708,19 @@
       div3.addEventListener("click", function () {
         if (currentIndex !== 0) {
           if (modeInput.value === "1" || modeInput.value === "3") {
-            showThis(div2);
-          }
-        }
-      });
-
-      div33.addEventListener("click", function () {
-        if (currentIndex !== 0) {
-          if (modeInput.value === "2") {
-            showThis(div2);
-            showThis(div3);
+            showThis(div1);
           }
         }
       });
 
       // hide
       function hideThis(me) {
-        me.style.display = "none";
+        me.style.opacity = "0";
       }
 
       // show
       function showThis(me) {
-        me.style.display = "flex";
+        me.style.opacity = "1";
       }
 
       function updateCountButton() {
@@ -740,8 +735,11 @@
         div1.innerHTML = "";
         div2.innerHTML = "";
         div3.innerHTML = "";
-        nextButton.innerHTML = "OK";
+        hideThis(div1);
         hideThis(div2);
+        hideThis(div3);
+        nextButton.innerHTML = "OK";
+        /* hideThis(div2); */
       }
 
       // color scheme mode 1

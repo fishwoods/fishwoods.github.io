@@ -485,8 +485,8 @@
         if (newArray.length === 0) {
           console.log("no words yet");
         } else {
-          div1.innerText = newArray[newIndex][0];
-          div2.innerText = newArray[newIndex][2];
+          div1.innerText = newArray[newIndex][2];
+          div2.innerText = newArray[newIndex][0];
           div3.innerText = newArray[newIndex][1];
         }
       }
@@ -495,8 +495,8 @@
         if (newArray.length === 0) {
           console.log("no words yet");
         } else {
-          div1.innerText = newArray[newIndex][2];
-          div2.innerText = newArray[newIndex][0];
+          div1.innerText = newArray[newIndex][0];
+          div2.innerText = newArray[newIndex][2];
           div3.innerText = newArray[newIndex][1];
         }
       }
@@ -542,8 +542,6 @@
           currentIndex = 0; // Reset to cycle through the words again
         }
 
-        console.log(modeInput.value);
-
         if (modeInput.value === "1") {
           mode1();
           nextButton.innerHTML = deepCopyArray.length - currentIndex;
@@ -578,7 +576,8 @@
       // ===== COUNT =====
       countButton.addEventListener("click", function () {
         //
-        hideThis(div2);
+
+        hideThis(div1);
 
         if (newIndex >= newArray.length) {
           newIndex = 0; // Reset to cycle through the words again
@@ -587,12 +586,9 @@
         if (modeInput.value === "1") {
           newArrayMode();
         } else if (modeInput.value === "2") {
+          hideThis(div1);
           hideThis(div3);
-          hideThis(div33);
           newArrayMode2();
-          div1.style.alignItems = "center";
-        } else {
-          newArrayMode();
         }
 
         newIndex++;

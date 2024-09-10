@@ -20,6 +20,10 @@
         -webkit-tap-highlight-color: transparent;
       }
 
+      *:active {
+        -webkit-tap-highlight-color: transparent;
+      }
+
       html {
         width: 100%;
         height: 100%;
@@ -32,19 +36,6 @@
         justify-content: center;
         align-items: center;
         background: #00004f;
-      }
-
-      button {
-        border: none;
-        outline: none;
-        cursor: pointer;
-        font-size: 1.5rem;
-        border-radius: 15%;
-      }
-
-      button:active {
-        opacity: 0.5;
-        transform: translateY(3px);
       }
 
       #elapsedTime {
@@ -71,12 +62,16 @@
         margin-top: 10px;
       }
 
-      #topNav > button {
+      #topNav > div {
         width: 44px;
         height: 44px;
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
+        font-size: 1.5rem;
+        border-radius: 15%;
+        font-size: 1rem;
       }
 
       #mode1Button,
@@ -102,12 +97,21 @@
         margin-bottom: 10px;
       }
 
-      #bottomNav > button {
+      #bottomNav > div {
         width: 100px;
         height: 100px;
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
+        border-radius: 15%;
+        font-size: 1.4rem;
+      }
+
+      #topNav > div:active,
+      #bottomNav > div:active {
+        opacity: 0.5;
+        transform: translateY(3px);
       }
 
       #addButton {
@@ -220,19 +224,19 @@
     <div id="elapsedTime"></div>
     <div id="wrapper">
       <div id="topNav">
-        <button id="mode1Button">1</button>
-        <button id="mode2Button">2</button>
-        <button id="mode3Button">3</button>
-        <button id="mode4Button">4</button>
-        <button id="listOfWords">w</button>
+        <div id="mode1Button">1</div>
+        <div id="mode2Button">2</div>
+        <div id="mode3Button">3</div>
+        <div id="mode4Button">4</div>
+        <div id="listOfWords">w</div>
       </div>
       <div id="div1"><span></span></div>
       <div id="div2"><span></span></div>
       <div id="div3"><span></span></div>
       <div id="bottomNav">
-        <button id="addButton">NO</button>
-        <button id="countButton">0</button>
-        <button id="nextButton">OK</button>
+        <div id="addButton">NO</div>
+        <div id="countButton">0</div>
+        <div id="nextButton">OK</div>
       </div>
     </div>
     <div id="tableDiv" style="display: none"></div>
@@ -624,7 +628,7 @@
           newArray.push(deepCopyArray[currentIndex - 1]);
         }
 
-        updateCountButton(); // Update the count button text
+        updateCountButton(); // Update the count text
       });
 
       mode1Button.addEventListener("click", function () {

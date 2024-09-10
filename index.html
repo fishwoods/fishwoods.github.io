@@ -40,6 +40,7 @@
 
       button:active {
         opacity: 0.5;
+        transform: translateY(3px);
       }
 
       #elapsedTime {
@@ -159,6 +160,12 @@
         justify-content: center;
         align-items: center;
         font-size: 3.2rem;
+        cursor: pointer;
+      }
+
+      #div2 span:active,
+      #div3 span:active {
+        transform: translateY(3px);
       }
 
       #div3 span {
@@ -461,7 +468,6 @@
       const div1 = document.querySelector("#div1 span");
       const div2 = document.querySelector("#div2 span");
       const div3 = document.querySelector("#div3 span");
-      const div33 = document.querySelector("#div3");
       const topNav = document.getElementById("topNav");
       const mode1Button = document.getElementById("mode1Button");
       const mode2Button = document.getElementById("mode2Button");
@@ -715,12 +721,14 @@
 
       // hide
       function hideThis(me) {
-        me.style.opacity = "0";
+        me.style.display = "none";
+        /*  me.style.opacity = "0"; */
       }
 
       // show
       function showThis(me) {
-        me.style.opacity = "1";
+        me.style.display = "";
+        /* me.style.opacity = "1"; */
       }
 
       function updateCountButton() {

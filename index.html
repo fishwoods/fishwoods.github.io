@@ -467,6 +467,7 @@
       const div1 = document.querySelector("#div1 span");
       const div2 = document.querySelector("#div2 span");
       const div3 = document.querySelector("#div3 span");
+      const div3div = document.getElementById("div3");
       const topNav = document.getElementById("topNav");
       const mode1Button = document.getElementById("mode1Button");
       const mode2Button = document.getElementById("mode2Button");
@@ -714,6 +715,15 @@
         if (currentIndex !== 0) {
           if (modeInput.value === "1" || modeInput.value === "3") {
             showThis(div1);
+          }
+        }
+      });
+
+      div3div.addEventListener("click", function () {
+        if (currentIndex !== 0) {
+          if (modeInput.value === "2") {
+            showThis(div1);
+            showThis(div3);
           }
         }
       });

@@ -163,8 +163,8 @@
         cursor: pointer;
       }
 
-      #div2 span:active,
-      #div3 span:active {
+      #div2:active,
+      #div3:active {
         transform: translateY(3px);
       }
 
@@ -721,8 +721,12 @@
 
       div3div.addEventListener("click", function () {
         if (currentIndex !== 0) {
-          if (modeInput.value === "2") {
+          if (modeInput.value === "1" || modeInput.value === "3") {
             showThis(div1);
+          } else if (modeInput.value === "2") {
+            showThis(div1);
+            showThis(div3);
+          } else if (modeInput.value === "4") {
             showThis(div3);
           }
         }
